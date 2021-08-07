@@ -4,7 +4,7 @@ extern int user_index;
 char file[] = "..\\data\\user_data.csv"
 
 extern struct customer s[100];
-
+//TODO: Add Email handler and Last login
 int getFile(){
     FILE* fp = fopen(file, "r");
     int i=0;

@@ -4,12 +4,14 @@
 struct customer {
     char userName[40];
     char password[40];
+    char email[100];
     char mobile_no[11];
     char accNo[40];//16bits long
     char IFSC[12]="PESU0002001";
     float balance;
     char upiId[40];//10bits long
     int upiPass;//6digits
+    char last_login;
 }s[100];
 
 int user_index = 0;

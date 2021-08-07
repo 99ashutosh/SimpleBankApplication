@@ -70,6 +70,7 @@ int greet_main(int argc, char* argv[]) {
     gtk_widget_set_visible(g_lbl_login_user_err, FALSE);
     gtk_widget_set_visible(g_lbl_login_pass_err, FALSE);
 
+    gtk_window_set_resizable(GTK_WINDOW(window) FALSE);
     g_object_unref(builder);
 
     gtk_widget_show(window);

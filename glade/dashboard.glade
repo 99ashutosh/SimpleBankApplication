@@ -50,7 +50,7 @@
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Current Balance:  ₹</property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Semilight, Semi-Light 15"/>
+                      <attribute name="font-desc" value="Segoe UI Semilight, Semi-Light 16"/>
                     </attributes>
                   </object>
                   <packing>
@@ -70,8 +70,8 @@
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">176</property>
-                    <property name="y">122</property>
+                    <property name="x">185</property>
+                    <property name="y">123</property>
                   </packing>
                 </child>
                 <child>
@@ -99,6 +99,23 @@
                   </object>
                   <packing>
                     <property name="y">174</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_home_acc_id">
+                    <property name="width-request">100</property>
+                    <property name="height-request">28</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">0</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Segoe UI Bold 15"/>
+                      <attribute name="style" value="normal"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">137</property>
+                    <property name="y">87</property>
                   </packing>
                 </child>
               </object>
@@ -488,7 +505,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="entry_withd_amt1">
+                  <object class="GtkEntry" id="entry_add_amt">
                     <property name="width-request">168</property>
                     <property name="height-request">32</property>
                     <property name="visible">True</property>
@@ -496,12 +513,12 @@
                     <property name="primary-icon-pixbuf">..\images\icons\svg-dark\currency-inr.svg</property>
                   </object>
                   <packing>
-                    <property name="x">236</property>
-                    <property name="y">63</property>
+                    <property name="x">245</property>
+                    <property name="y">61</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="btn_withdraw1">
+                  <object class="GtkButton" id="btn_add_funds">
                     <property name="label" translatable="yes">Proceed with Transaction</property>
                     <property name="width-request">183</property>
                     <property name="height-request">28</property>
@@ -515,7 +532,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="entry_withd_pass1">
+                  <object class="GtkEntry" id="entry_add_pass1">
                     <property name="width-request">250</property>
                     <property name="height-request">32</property>
                     <property name="visible">True</property>
@@ -579,7 +596,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="lbl_add_bal1">
+                  <object class="GtkLabel" id="lbl_add_bal">
                     <property name="width-request">233</property>
                     <property name="height-request">80</property>
                     <property name="visible">True</property>
@@ -947,13 +964,15 @@ Reciver's Account</property>
                 </child>
                 <child>
                   <object class="GtkSwitch" id="switch_upi">
+                    <property name="width-request">40</property>
+                    <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <signal name="activate" handler="on_switch_upi_activate" swapped="no"/>
                   </object>
                   <packing>
                     <property name="x">97</property>
-                    <property name="y">10</property>
+                    <property name="y">16</property>
                   </packing>
                 </child>
                 <child>
@@ -1611,16 +1630,14 @@ After changes, click on "Change Account Details"</property>
                 <child>
                   <object class="GtkButton" id="btn_logout">
                     <property name="label" translatable="yes">Log out of Account</property>
-                    <property name="width-request">134</property>
-                    <property name="height-request">32</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <signal name="clicked" handler="on_brn_logout_clicked" swapped="no"/>
+                    <signal name="clicked" handler="on_btn_logout_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="x">68</property>
-                    <property name="y">150</property>
+                    <property name="y">159</property>
                   </packing>
                 </child>
                 <child>
