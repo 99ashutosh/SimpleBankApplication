@@ -123,3 +123,4 @@ G_MODULE_EXPORT void on_btn_exit_clicked (GtkButton *btn_exit, user_data){
     //TODO: Finish logout functions
     gtk_main_quit();
 }
+//
