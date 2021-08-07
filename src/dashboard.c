@@ -109,7 +109,6 @@ int dashboard_main(int index, int argc, char *argv[]){
     g_slice_free(upi_widgets, upi_data);
 
     return 0;
-
 }
 
 G_MODULE_EXPORT void on_btn_update_upi_clicked (GtkButton *btn_update_upi, upi_widgets *upi_data){
