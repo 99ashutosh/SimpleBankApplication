@@ -7,7 +7,10 @@
     <property name="height-request">350</property>
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">Bank Application</property>
-    <property name="startup-id">bank-app</property>
+    <property name="window-position">center</property>
+    <property name="icon">..\images\icons\dashboard\main_bank.svg</property>
+    <property name="gravity">center</property>
+    <property name="startup-id">bank-appliication</property>
     <signal name="destroy" handler="win_destroy" swapped="no"/>
     <child>
       <object class="GtkPaned" id="greet_pane">
@@ -22,7 +25,7 @@
             <child>
               <object class="GtkLabel" id="lbl_greet_welcome">
                 <property name="width-request">195</property>
-                <property name="height-request">51</property>
+                <property name="height-request">177</property>
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Welcome
@@ -33,8 +36,8 @@ Bank</property>
                 </attributes>
               </object>
               <packing>
-                <property name="x">29</property>
-                <property name="y">124</property>
+                <property name="x">28</property>
+                <property name="y">79</property>
               </packing>
             </child>
           </object>
@@ -72,6 +75,8 @@ Bank</property>
                     <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\account-circle.svg</property>
+                    <property name="primary-icon-tooltip-text" translatable="yes">Enter Username</property>
                     <property name="placeholder-text" translatable="yes">Enter Username</property>
                     <property name="input-purpose">name</property>
                   </object>
@@ -88,6 +93,8 @@ Bank</property>
                     <property name="can-focus">True</property>
                     <property name="visibility">False</property>
                     <property name="invisible-char">•</property>
+                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\vpn-key.svg</property>
+                    <property name="primary-icon-tooltip-text" translatable="yes">Enter Password</property>
                     <property name="placeholder-text" translatable="yes">Enter Password</property>
                     <property name="input-purpose">password</property>
                   </object>
@@ -109,56 +116,6 @@ Bank</property>
                   <packing>
                     <property name="x">493</property>
                     <property name="y">264</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="lbl_success">
-                    <property name="width-request">91</property>
-                    <property name="height-request">20</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Login Successful!</property>
-                    <attributes>
-                      <attribute name="foreground" value="#2e2ec2c27e7e"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="x">13</property>
-                    <property name="y">274</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="lbl_username_err">
-                    <property name="width-request">161</property>
-                    <property name="height-request">75</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Invalid Username or User does not exist</property>
-                    <property name="wrap">True</property>
-                    <property name="wrap-mode">word-char</property>
-                    <attributes>
-                      <attribute name="foreground" value="#eded33333b3b"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="x">421</property>
-                    <property name="y">57</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="lbl_login_pass_errr">
-                    <property name="width-request">87</property>
-                    <property name="height-request">20</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Invalid Password</property>
-                    <attributes>
-                      <attribute name="foreground" value="#eded33333b3b"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="x">424</property>
-                    <property name="y">168</property>
                   </packing>
                 </child>
               </object>
@@ -198,7 +155,9 @@ Bank</property>
                     <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="placeholder-text" translatable="yes">Enter Account Holder's Name</property>
+                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\account-circle.svg</property>
+                    <property name="primary-icon-tooltip-text" translatable="yes">Enter Account Holder Name</property>
+                    <property name="placeholder-text" translatable="yes">Enter Account Holder Name</property>
                     <signal name="changed" handler="on_entry_new_username_changed" swapped="no"/>
                   </object>
                   <packing>
@@ -226,6 +185,8 @@ Bank</property>
                     <property name="can-focus">True</property>
                     <property name="visibility">False</property>
                     <property name="invisible-char">•</property>
+                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\vpn-key.svg</property>
+                    <property name="primary-icon-tooltip-text" translatable="yes">Enter Password</property>
                     <property name="placeholder-text" translatable="yes">Enter Password</property>
                     <property name="input-purpose">password</property>
                     <signal name="changed" handler="on_entry_new_password_changed" swapped="no"/>
@@ -254,9 +215,10 @@ Bank</property>
                     <property name="can-focus">True</property>
                     <property name="visibility">False</property>
                     <property name="invisible-char">•</property>
+                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\vpn-key.svg</property>
+                    <property name="primary-icon-tooltip-text" translatable="yes">Retype Password</property>
                     <property name="placeholder-text" translatable="yes">Re-Type Password</property>
                     <property name="input-purpose">password</property>
-                    <signal name="changed" handler="on_entry_new_retype_password_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="x">13</property>
@@ -269,6 +231,8 @@ Bank</property>
                     <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\email.svg</property>
+                    <property name="primary-icon-tooltip-text" translatable="yes">Enter Email Address</property>
                     <property name="placeholder-text" translatable="yes">Enter E-mail address</property>
                     <property name="input-purpose">email</property>
                   </object>
@@ -283,12 +247,14 @@ Bank</property>
                     <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\call.svg</property>
+                    <property name="primary-icon-tooltip-text" translatable="yes">Enter Mobile Number</property>
                     <property name="placeholder-text" translatable="yes">Enter Mobile Number</property>
                     <property name="input-purpose">phone</property>
                   </object>
                   <packing>
                     <property name="x">13</property>
-                    <property name="y">177</property>
+                    <property name="y">178</property>
                   </packing>
                 </child>
                 <child>
@@ -307,38 +273,6 @@ Bank</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="lbl_user_exists">
-                    <property name="width-request">101</property>
-                    <property name="height-request">20</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">User Already Exists!</property>
-                    <attributes>
-                      <attribute name="foreground" value="#eded33333b3b"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="x">318</property>
-                    <property name="y">17</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="lbl_create_success">
-                    <property name="width-request">168</property>
-                    <property name="height-request">20</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">New Account added to record!</property>
-                    <attributes>
-                      <attribute name="foreground" value="#5757e3e38989"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="x">9</property>
-                    <property name="y">269</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkLabel" id="lbl_strong">
                     <property name="width-request">90</property>
                     <property name="height-request">20</property>
@@ -351,22 +285,6 @@ Bank</property>
                   </object>
                   <packing>
                     <property name="x">319</property>
-                    <property name="y">57</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="lbl_weak">
-                    <property name="width-request">84</property>
-                    <property name="height-request">20</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Weak Password!</property>
-                    <attributes>
-                      <attribute name="foreground" value="#eded33333b3b"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="x">318</property>
                     <property name="y">57</property>
                   </packing>
                 </child>
@@ -411,6 +329,38 @@ Bank</property>
                   <packing>
                     <property name="x">319</property>
                     <property name="y">104</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_weak">
+                    <property name="width-request">84</property>
+                    <property name="height-request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Weak Password!</property>
+                    <attributes>
+                      <attribute name="foreground" value="#eded33333b3b"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">318</property>
+                    <property name="y">57</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_user_exists">
+                    <property name="width-request">101</property>
+                    <property name="height-request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">User Already Exists!</property>
+                    <attributes>
+                      <attribute name="foreground" value="#eded33333b3b"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">318</property>
+                    <property name="y">17</property>
                   </packing>
                 </child>
               </object>
