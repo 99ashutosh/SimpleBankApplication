@@ -118,13 +118,17 @@ int dashboard_main(int index, int argc, char *argv[]){
 }
 
 G_MODULE_EXPORT void on_btn_update_upi_clicked (GtkButton *btn_update_upi, upi_widgets *upi_data){
+    gtk_widget_set_visible(upi_data->g_upi_img_ok, FALSE);
+    gtk_widget_set_visible(upi_data->g_lbl_pass_no_match, FALSE);
+    gtk_widget_set_visible(upi_data->g_lbl_pass_set, FALSE);
+    gtk_widget_set_visible(upi_data->g_lbl_pass_set_fail, FALSE);
     const char *password = gtk_entry_get_text(GTK_ENTRY(upi_data->g_entry_upi_pass));
     const char *repeat_password = gtk_entry_get_text(GTK_ENTRY(upi_data->g_entry_upi_repass));
     if (strcmp(password, repeat_password) == '0' || strcmp(password, repeat_password) == 0){
         if (set_upi_pass(password) == 1){
-            gtk_widget_set_visible();
+            gtk_widget_set_visible(upi_data->g_lbl_pass_set, TRUE);
         } else {
-            gtk_widget_set_visible();
+            gtk_widget_set_visible(upi_data->g_lbl_pass_set_fail, TRUE);
         }
     } else {
         gtk_widget_set_visible(upi_data->g_lbl_pass_no_match, TRUE);
