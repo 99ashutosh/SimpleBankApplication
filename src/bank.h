@@ -24,6 +24,7 @@ void decrypt(char *a);
 int getFile();
 int login(char username[50], char password[50]);
 void signup(char username, char password, char number, char email);
+int set_upi_pass(int pass);
 
 //Greet Functions
 int greet_main();

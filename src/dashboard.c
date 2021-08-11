@@ -27,6 +27,8 @@ typedef struct {           //UPI tab
 
     // All Upi pin widgets
     GtkWidget *g_lbl_pass_no_match;
+    GtkWidget *g_lbl_pass_set;
+    GtkWidget *g_lbl_pass_set_fail;
     GtkWidget *g_entry_upi_pass;
     GtkWidget *g_entry_upi_repass;
     GtkWidget *g_switch_upi;
@@ -70,6 +72,8 @@ int dashboard_main(int index, int argc, char *argv[]){
 
     //UPI widgets defined here
     upi_data->g_lbl_pass_no_match = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_pass_no_match"));
+    upi_data->g_lbl_pass_set = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_pass_set));
+    upi_data->g_lbl_pass_set_fail = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_pass_set_fail"));
     upi_data->g_upi_img_ok = GTK_WIDGET(gtk_builder_get_object(builder, "img_upi_ok"));
     upi_data->g_lbl_upi_handler = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_upi_handler"));
     upi_data->g_lbl_upi_passcode1 = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_upi_passcode1"));
@@ -94,6 +98,8 @@ int dashboard_main(int index, int argc, char *argv[]){
     //Visibility
     gtk_widget_set_visible(upi_data->g_upi_img_ok, FALSE);
     gtk_widget_set_visible(upi_data->g_lbl_pass_no_match, FALSE);
+    gtk_widget_set_visible(upi_data->g_lbl_pass_set, FALSE);
+    gtk_widget_set_visible(upi_data->g_lbl_pass_set_fail, FALSE);
 
     //Signal Connect and exit
     gtk_builder_connect_signals(builder, upi_data);
@@ -112,7 +118,17 @@ int dashboard_main(int index, int argc, char *argv[]){
 }
 
 G_MODULE_EXPORT void on_btn_update_upi_clicked (GtkButton *btn_update_upi, upi_widgets *upi_data){
-//TODO: Finish UPI function
+    const char *password = gtk_entry_get_text(GTK_ENTRY(upi_data->g_entry_upi_pass));
+    const char *repeat_password = gtk_entry_get_text(GTK_ENTRY(upi_data->g_entry_upi_repass));
+    if (strcmp(password, repeat_password) == '0' || strcmp(password, repeat_password) == 0){
+        if (set_upi_pass(password) == 1){
+            gtk_widget_set_visible();
+        } else {
+            gtk_widget_set_visible();
+        }
+    } else {
+        gtk_widget_set_visible(upi_data->g_lbl_pass_no_match, TRUE);
+    }
 }
 
 G_MODULE_EXPORT void on_btn_logout_clicked (GtkButton *btn_logout){
@@ -121,6 +137,5 @@ G_MODULE_EXPORT void on_btn_logout_clicked (GtkButton *btn_logout){
 
 G_MODULE_EXPORT void on_btn_exit_clicked (GtkButton *btn_exit, user_data){
     //TODO: Finish logout functions
-    //test
     gtk_main_quit();
 }

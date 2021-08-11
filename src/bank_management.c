@@ -102,8 +102,10 @@ int check_user(char user[]){
 }
 
 int set_upi_pass(int pass)
-    s[i].upiPass = pass;
     if(s[i].upiPass>=100000 && s[i].upiPass<=999999){
+        s[i].upiPass = pass;
+        return 1;
+    } else {
         return 2;
     }
 }

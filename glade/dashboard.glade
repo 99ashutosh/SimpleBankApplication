@@ -1122,6 +1122,40 @@ Current UPI Handler can be seen on the right pane.</property>
                     <property name="y">187</property>
                   </packing>
                 </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_pass_set">
+                    <property name="width-request">108</property>
+                    <property name="height-request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">UPI Password Set!</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans 10"/>
+                      <attribute name="foreground" value="#2e2ec2c27e7e"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">360</property>
+                    <property name="y">454</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_pass_set_fail">
+                    <property name="width-request">131</property>
+                    <property name="height-request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">UPI Password Set fail!</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans 10"/>
+                      <attribute name="foreground" value="#e0e01b1b2424"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">339</property>
+                    <property name="y">454</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="resize">False</property>
