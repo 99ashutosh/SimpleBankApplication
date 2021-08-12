@@ -1,20 +1,18 @@
 #ifndef BANK
 #define BANK
 
-struct customer {
-    char userName[40];
+typedef struct{
+    char *userName;
     char password[40];
     char email[100];
     char mobile_no[11];
     char accNo[40];//16bits long
-    const char IFSC[12]="PESU0002001";
+    char *IFSCcode;
     float balance;
     char upiId[40];//10bits long
     int upiPass;//6digits
-    char last_login;
-} s[100];
-
-int user_index = 0;
+    char *last_login;
+} customer;
 
 //Encrypt Decrypt functions
 void encrypt(char *a);
@@ -24,7 +22,7 @@ void decrypt(char *a);
 int get_user_index(char user[]);
 int getFile();
 int login(char username[50], char password[50]);
-void signup(char username, char password, char number, char email);
+void signup(const char *username, const char *password, const char *number, const char *email);
 int upi_transfer(int user_index, int upi_passcode, float amount);
 int set_upi_pass(int pass);
 

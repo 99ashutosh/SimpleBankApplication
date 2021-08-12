@@ -1,14 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
+#include <string.h>
 #include "bank.h"
 
 extern int user_index;
-extern struct customer s[100];
+
+customer s[100];
+
 char file[] = "..\\data\\user_data.csv";
 int size = 0;
 
-//TODO: Add Email handler and Last login
 int getFile(){
     FILE* fp = fopen(file, "r");
     int i=0;
@@ -22,8 +25,7 @@ int getFile(){
         {
             column = 0;
             row++;
-            if (row == 1)
-                continue;
+            if (row == 1)continue;
             char* value = strtok(buffer, ",");
             while (value){
                 strcpy(s[i].userName,value);
@@ -34,13 +36,17 @@ int getFile(){
                 value = strtok(NULL, ",");
                 strcpy(s[i].accNo,value);
                 value = strtok(NULL, ",");
-                strcpy(s[i].IFSCcode,value);
+                s[i].IFSCcode = "PESU0002001";
                 value = strtok(NULL, ",");
                 s[i].balance = strtof(value,NULL);
+                value = strtok(NULL, ",");
+                strcpy(s[i].email, value);
                 value = strtok(NULL, ",");
                 strcpy(s[i].upiId,value);
                 value = strtok(NULL, ",");
                 s[i].upiPass = atoi(value);
+                value = strtok(NULL, ",");
+                strcpy(s[i].last_login,value);
                 value = strtok(NULL, ",");
                 i++;
             }
@@ -50,10 +56,10 @@ int getFile(){
     size=i;
 }
 
-void putFile(struct customer c[]){
+void putFile(customer c[]){
     FILE* fp = fopen(file, "w");
     int i=0;
-    fputs("Username,Password,MobNo,AccountID,IFSC,Balance,UPI_ID,UPI_passcode\n",fp);
+    fputs("Username,Password,MobNo,AccountID,IFSC,Balance,Email,UPI_ID,UPI_passcode,Logout_time\n",fp);
     while(i<size)
     {
         fputs(s[i].userName,fp);
@@ -70,10 +76,15 @@ void putFile(struct customer c[]){
         sprintf(text, "%.2f", s[i].balance); 
         fputs(text,fp);
         fputc(',',fp);
+        fputs(s[i].email,fp);
+        fputc(',',fp);
         fputs(s[i].upiId,fp);
         fputc(',',fp);
         sprintf(text, "%d", s[i].upiPass); 
         fputs(text,fp);
+        sprintf(text, "%.2f", s[i].last_login);
+        fputs(text,fp);
+        fputc(',',fp);
         fputs("\n",fp);
         i++;
     }
@@ -83,6 +94,7 @@ void putFile(struct customer c[]){
 int get_user_index(char user[]){
     for(int i=0;i<size;i++){
         if(!strcmp(s[i].userName,user))
+            user_index = i;
             return i;
     }
 }
@@ -107,8 +119,8 @@ int check_user(char user[]){
 }
 
 int set_upi_pass(int pass){
-    if(s[i].upiPass>=100000 && s[i].upiPass<=999999){
-        s[i].upiPass = pass;
+    if(pass>=100000 && pass<=999999){
+        s[user_index].upiPass = pass;
         return 1;
     } else {
         return 2;
@@ -161,7 +173,7 @@ xyz:
     printf("Money transfer successfull!\n");
 }
 */
-void signup(char username, char password, char number, char email){
+void signup(const char *username, const char *password, const char *number, const char *email){
     size++;
     int i = size - 1;
     char mob_no[15];

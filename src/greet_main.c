@@ -23,6 +23,8 @@ GtkWidget *g_entry_new_retype_password;
 GtkWidget *g_entry_new_mobno;
 GtkWidget *g_entry_new_email;
 
+int user_index = 0;
+
 int greet_main(int argc, char* argv[]) {
     GtkBuilder* builder;
     GtkWidget* window;
@@ -138,11 +140,11 @@ G_MODULE_EXPORT void on_entry_new_username_changed(GtkWidget *widget, gpointer w
     if (strlen(username) == 0) {
         gtk_spinner_start(GTK_SPINNER(g_check));
         gtk_widget_set_sensitive(g_btn_greet_create_username, FALSE);
-    }else if (find(username)==0){
+    }else if (check_user(username)==0){
         gtk_spinner_stop(GTK_SPINNER(g_check));
         gtk_widget_set_visible(g_lbl_user_exists, TRUE);
         gtk_widget_set_sensitive(g_btn_greet_create_username, FALSE);
-    } else if (find(username)==1){
+    } else if (check_user(username)==1){
         gtk_spinner_stop(GTK_SPINNER(g_check));
         gtk_widget_set_visible(g_img_user_valid, TRUE);
     }

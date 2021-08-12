@@ -1,7 +1,8 @@
 #include <gtk/gtk.h>
 #include <string.h>
 #include "bank.h"
-extern struct customer s;
+
+extern customer s[100];
 
 typedef struct {  //Home Tab
     // All home_bal widgets
@@ -87,10 +88,10 @@ int dashboard_main(int index, int argc, char *argv[]){
     gtk_label_set_text(home_data->g_lbl_home_upi_passcode,"******");
     gtk_label_set_text(home_data->g_lbl_home_lastlogin,s[index].last_login);
     gtk_label_set_text(home_data->g_lbl_home_acc_id,s[index].accNo);
-    gtk_label_set_text(home_data->g_lbl_home_bal,s[index].balance);
+    gtk_label_set_text(home_data->g_lbl_home_bal,(int)s[index].balance);
 
     //Add Funds data set
-    gtk_label_set_text(funds_data->g_lbl_add_bal,s[index].balance);
+    gtk_label_set_text(funds_data->g_lbl_add_bal,(int)s[index].balance);
 
     //UPI Data set
     gtk_label_set_text(upi_data->g_lbl_upi_handler,s[index].upiId);
@@ -139,7 +140,7 @@ G_MODULE_EXPORT void on_btn_update_upi_clicked (GtkButton *btn_update_upi, upi_w
 G_MODULE_EXPORT void on_btn_logout_clicked (GtkButton *btn_logout){
 //TODO: Finish logout functions
 }
-
+/*
 G_MODULE_EXPORT void on_btn_exit_clicked (GtkButton *btn_exit){
     //TODO: Finish logout functions
     gtk_main_quit();
@@ -148,3 +149,4 @@ G_MODULE_EXPORT void on_btn_exit_clicked (GtkButton *btn_exit){
 void reload(){
     //TODO: Add all widgets to reload here
 }
+ */

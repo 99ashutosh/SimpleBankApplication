@@ -4,7 +4,6 @@
 #include "bank.h"
 
 int main(int argc, char* argv[]){
-	extern int user_index;
 	GtkBuilder* builder;
 	GtkWidget* window;
 
@@ -16,8 +15,9 @@ int main(int argc, char* argv[]){
 	getFile();
     if (getFile()==3){
         gtk_widget_show(window);
+    } else {
+        greet_main('\0','\0');
     }
-    greet_main('\0','\0');
 	g_object_unref(builder);
 	gtk_main();
 }
