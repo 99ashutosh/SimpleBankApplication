@@ -17,11 +17,7 @@ int main(int argc, char* argv[]){
     if (getFile()==3){
         gtk_widget_show(window);
     }
-	greet_main();
-
-	user_index = get_user_index();
-	dashboard_main(user_index,'\0','\0');
-
+    greet_main('\0','\0');
 	g_object_unref(builder);
 	gtk_main();
 }

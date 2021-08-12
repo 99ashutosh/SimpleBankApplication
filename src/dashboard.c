@@ -1,6 +1,7 @@
 #include <gtk/gtk.h>
 #include <string.h>
 #include "bank.h"
+extern struct customer s;
 
 typedef struct {  //Home Tab
     // All home_bal widgets
@@ -23,7 +24,7 @@ typedef struct{ //Add funds tab
     GtkWidget *g_entry_add_pass1;
 } add_funds_Widgets;
 
-typedef struct {           //UPI tab
+typedef struct {  //UPI tab
 
     // All Upi pin widgets
     GtkWidget *g_lbl_pass_no_match;
@@ -72,7 +73,7 @@ int dashboard_main(int index, int argc, char *argv[]){
 
     //UPI widgets defined here
     upi_data->g_lbl_pass_no_match = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_pass_no_match"));
-    upi_data->g_lbl_pass_set = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_pass_set));
+    upi_data->g_lbl_pass_set = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_pass_set"));
     upi_data->g_lbl_pass_set_fail = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_pass_set_fail"));
     upi_data->g_upi_img_ok = GTK_WIDGET(gtk_builder_get_object(builder, "img_upi_ok"));
     upi_data->g_lbl_upi_handler = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_upi_handler"));
@@ -106,7 +107,7 @@ int dashboard_main(int index, int argc, char *argv[]){
     gtk_builder_connect_signals(builder, home_data);
     g_object_unref(builder);
 
-    gtk_window_set_resizable(GTK_WINDOW(window) FALSE);
+    gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
     gtk_widget_show(window);
     gtk_main();
 
@@ -139,7 +140,11 @@ G_MODULE_EXPORT void on_btn_logout_clicked (GtkButton *btn_logout){
 //TODO: Finish logout functions
 }
 
-G_MODULE_EXPORT void on_btn_exit_clicked (GtkButton *btn_exit, user_data){
+G_MODULE_EXPORT void on_btn_exit_clicked (GtkButton *btn_exit){
     //TODO: Finish logout functions
     gtk_main_quit();
+}
+
+void reload(){
+    //TODO: Add all widgets to reload here
 }

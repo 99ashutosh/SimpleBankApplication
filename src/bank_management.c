@@ -1,9 +1,13 @@
 #include <stdio.h>
 #include <string.h>
-extern int user_index;
-char file[] = "..\\data\\user_data.csv"
+#include <stdlib.h>
+#include "bank.h"
 
+extern int user_index;
 extern struct customer s[100];
+char file[] = "..\\data\\user_data.csv";
+int size = 0;
+
 //TODO: Add Email handler and Last login
 int getFile(){
     FILE* fp = fopen(file, "r");
@@ -18,12 +22,10 @@ int getFile(){
         {
             column = 0;
             row++;
-            if (row == 1)continue;
-  
+            if (row == 1)
+                continue;
             char* value = strtok(buffer, ",");
-  
-            while (value) 
-            {
+            while (value){
                 strcpy(s[i].userName,value);
                 value = strtok(NULL, ",");
                 strcpy(s[i].password,value);
@@ -78,8 +80,11 @@ void putFile(struct customer c[]){
     fclose(fp);
 }
 
-int get_user_index(){
-
+int get_user_index(char user[]){
+    for(int i=0;i<size;i++){
+        if(!strcmp(s[i].userName,user))
+            return i;
+    }
 }
 void accGenerator(char *s){
     srand(time(0));
@@ -101,7 +106,7 @@ int check_user(char user[]){
     }
 }
 
-int set_upi_pass(int pass)
+int set_upi_pass(int pass){
     if(s[i].upiPass>=100000 && s[i].upiPass<=999999){
         s[i].upiPass = pass;
         return 1;
@@ -110,81 +115,40 @@ int set_upi_pass(int pass)
     }
 }
 
-int deposit(char *user, float cash;){
-    getFile(s);
-    for(int i=0;i<size;i++)
-    {
-        if (strcmp(s[i].userName, user) == '0' || strcmp(s[i].userName, user) == 0) {
-            s[i].balance += cash;
-            return 1;
-        }
-        else {
-            return 2;
-        }
-    }
+int deposit(int user_index, float cash){
+    s[user_index].balance += cash;
     putFile(s);
 }
 
-void withdraw(char* user){
-    float cash;
-    printf("\nEnter the cash to be withdrawn: ");
-    scanf("%f", &cash);
-    getFile(s);
-    for (int i = 0; i < size; i++)
-    {
-        if (strcmp(s[i].userName, user) == '0' || strcmp(s[i].userName, user) == 0)
-            s[i].balance -= cash;
-
-    }
+int withdraw(int user_index, float amount){
+    s[user_index].balance -= amount;
     putFile(s);
-    printf("Withdraw successfull\n");
+    return 1;
 }
 
-float balance(char* user){
-    for (int i = 0; i < size; i++){
-        if (strcmp(s[i].userName, user) == '0' || strcmp(s[i].userName, user) == 0)
-            return s[i].balance;
-    }
-    return -1;
+float get_balance(int user_index){
+    return s[user_index].balance;
 }
-
-void transfer(char* user)
-{
+/*
+int upi_transfer(int user_index, int upi_passcode, float amount){
     char reciever[15], reci[15];
     int i, checkpass, u, flag = 0;
-    printf("\nEnter your UPIpass to continue: ");
-abc:
-    scanf("%d", &checkpass);
-    getFile(s);
-    for (i = 0; i < size; i++)
-    {
-        if (strcmp(s[i].userName, user) == '0' || strcmp(s[i].userName, user) == 0)
-        {
-            if (s[i].upiPass == checkpass)
-            {
-                printf("UPIpass matched\n");
-                u = i;
-            }
-            else
-            {
-                printf("Wrong UPIpass,try again\n");
-                goto abc;
-            }
-        }
+    if (s[user_index].upiPass == upi_passcode){
+        u = i;
+        return 1; //PAss case
+    } else {
+        return 2; //Fail case
+
     }
-    printf("Enter a reciever UPIid\n");
 xyz:
     scanf("%s", &reciever);
-    getFile(s);
     float cash;
     for (int i = 0; i < size; i++)
     {
         if (strcmp(s[i].upiId, reciever) == '0' || strcmp(s[i].upiId, reciever) == 0)
         {
-            printf("Enter the amount of cash to be transferred: ");
-            scanf("%f", &cash);
-            s[u].balance -= cash;
-            s[i].balance += cash;
+            s[u].balance -= amount;
+            s[i].balance += amount;
             flag = 1;
             putFile(s);
         }
@@ -196,7 +160,7 @@ xyz:
     }
     printf("Money transfer successfull!\n");
 }
-
+*/
 void signup(char username, char password, char number, char email){
     size++;
     int i = size - 1;
@@ -206,7 +170,6 @@ void signup(char username, char password, char number, char email){
     strcpy(s[i].mobile_no, number);
     accGenerator(s[i].accNo);
     s[i].balance = 0;
-    s[i].IFSC = "PESU0002001";
     strcpy(mob_no, s[i].mobile_no);
     strcat(mob_no, "@pesu");
     strcpy(s[i].upiId, mob_no);

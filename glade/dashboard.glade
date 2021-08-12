@@ -718,6 +718,7 @@
                     <property name="can-focus">True</property>
                     <property name="receives-default">False</property>
                     <property name="draw-indicator">True</property>
+                    <property name="group">rad_upi</property>
                   </object>
                   <packing>
                     <property name="x">44</property>
@@ -734,6 +735,7 @@
                     <property name="receives-default">False</property>
                     <property name="active">True</property>
                     <property name="draw-indicator">True</property>
+                    <property name="group">rad_cred_deb</property>
                   </object>
                   <packing>
                     <property name="x">45</property>
@@ -749,6 +751,7 @@
                     <property name="can-focus">True</property>
                     <property name="receives-default">False</property>
                     <property name="draw-indicator">True</property>
+                    <property name="group">rad_upi</property>
                   </object>
                   <packing>
                     <property name="x">43</property>
@@ -776,7 +779,7 @@
                     <property name="height-request">32</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="placeholder-text" translatable="yes">Enter Reciver's UPI Handler</property>
+                    <property name="placeholder-text" translatable="yes">Enter Reciever's UPI Handler</property>
                     <signal name="changed" handler="on_entry_withd_upir_changed" swapped="no"/>
                   </object>
                   <packing>
@@ -834,6 +837,23 @@
                   </object>
                   <packing>
                     <property name="y">39</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_withd_upi_pass">
+                    <property name="width-request">168</property>
+                    <property name="height-request">30</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="tooltip-text" translatable="yes">Enter current UPI PI-PIN</property>
+                    <property name="visibility">False</property>
+                    <property name="invisible-char">•</property>
+                    <property name="placeholder-text" translatable="yes">Enter UPI PI-PIN</property>
+                    <property name="input-purpose">number</property>
+                  </object>
+                  <packing>
+                    <property name="x">116</property>
+                    <property name="y">292</property>
                   </packing>
                 </child>
               </object>

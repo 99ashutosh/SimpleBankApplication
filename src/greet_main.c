@@ -70,7 +70,7 @@ int greet_main(int argc, char* argv[]) {
     gtk_widget_set_visible(g_lbl_login_user_err, FALSE);
     gtk_widget_set_visible(g_lbl_login_pass_err, FALSE);
 
-    gtk_window_set_resizable(GTK_WINDOW(window) FALSE);
+    gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
     g_object_unref(builder);
 
     gtk_widget_show(window);
@@ -124,8 +124,8 @@ G_MODULE_EXPORT void on_btn_login_clicked(GtkWidget* wid, gpointer data) {
         gtk_widget_set_visible(g_lbl_login_pass_err, TRUE);
     }
     else if (login(username, password) == 0) {
-        // TODO: Find a elegant way to call dashboard
-        return 1;
+        user_index = get_user_index(username);
+        dashboard_main(user_index,'\0','\0');
     }
 }
 // TODO: Definitions of many gtk calls missing
