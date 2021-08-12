@@ -6,12 +6,11 @@
 #include "bank.h"
 
 extern int user_index;
+extern customer s[];
 
-customer s[100];
-
-char file[] = "..\\data\\user_data.csv";
+char file[] = "../data/user_data.csv";
 int size = 0;
-
+/*
 int getFile(){
     FILE* fp = fopen(file, "r");
     int i=0;
@@ -55,6 +54,48 @@ int getFile(){
     }
     size=i;
 }
+*/
+void getFile(customer c[])
+        {
+    FILE* fp = fopen(file, "r");
+    int i=0;
+    if (!fp)
+        printf("File is empty!!\n");
+    else
+    {
+        char buffer[256];
+        int row = 0,column=0;
+        while (fgets(buffer,256, fp))
+        {
+            column = 0;
+            row++;
+            if (row == 1)continue;
+
+            char* value = strtok(buffer, ",");
+
+            while (value)
+            {
+                strcpy(c[i].userName,value);
+                value = strtok(NULL, ",");
+                strcpy(c[i].password,value);
+                value = strtok(NULL, ",");
+                strcpy(c[i].accNo,value);
+                value = strtok(NULL, ",");
+                strcpy(c[i].IFSCcode,value);
+                value = strtok(NULL, ",");
+                c[i].balance = strtof(value,NULL);
+                value = strtok(NULL, ",");
+                strcpy(c[i].upiId,value);
+                value = strtok(NULL, ",");
+                c[i].upiPass = atoi(value);
+                value = strtok(NULL, ",");
+                i++;
+            }
+        }
+        fclose(fp);
+    }
+    size=i;
+        }
 
 void putFile(customer c[]){
     FILE* fp = fopen(file, "w");

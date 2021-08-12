@@ -2,7 +2,7 @@
 #include <string.h>
 #include "bank.h"
 
-extern customer s[100];
+customer s[];
 
 typedef struct {  //Home Tab
     // All home_bal widgets

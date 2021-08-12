@@ -11,13 +11,14 @@ int main(int argc, char* argv[]){
 	builder = gtk_builder_new_from_file("../glade/utils.glade");
 	window = GTK_WIDGET(gtk_builder_get_object(builder, "err_dialog"));
 	gtk_builder_connect_signals(builder, NULL);
-
-	getFile();
-    if (getFile()==3){
+	extern customer s[];
+    /*
+	if (getFile(s)==3){
         gtk_widget_show(window);
     } else {
+     */
         greet_main('\0','\0');
-    }
+    //}
 	g_object_unref(builder);
 	gtk_main();
 }
