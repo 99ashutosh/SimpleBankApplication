@@ -1,27 +1,24 @@
-typedef struct{
-    char *userName;
-    char *password;
-    char *email;
-    char *mobile_no;
-    char *accNo;
-    char *IFSCcode;
+struct customer {
+    char userName[40];
+    char password[40];
+    char mob_no[10];
+    char accNo[40];//16bits long
+    char IFSCcode[40];//10bits long
     float balance;
-    char *upiId;
-    int upiPass;
-    char *last_login;
-} customer;
-
-//Encrypt Decrypt functions
-void encrypt(char *a);
-void decrypt(char *a);
+    char email[50];
+    char upiId[40];//10bits long
+    int upiPass;//6digits
+    char last_login[100];
+};
 
 //Bank Management Functions
+void getFile();
+void putFile();
 int get_user_index(char user[]);
-void getFile(customer c[]);
+int find_user(char username[]);
+void signup(char username[40], char password[40], char number[10], char email[100]);
 int login(char username[50], char password[50]);
-void signup(const char *username, const char *password, const char *number, const char *email);
-int upi_transfer(int user_index, int upi_passcode, float amount);
-int set_upi_pass(int pass);
+int set_upi_pass(int user_index, int pass);
 
 //Greet Functions
 int greet_main();

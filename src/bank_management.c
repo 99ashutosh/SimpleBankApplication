@@ -5,23 +5,20 @@
 #include <string.h>
 #include "bank.h"
 
-extern int user_index;
-extern customer s[];
 
+struct customer s[100];
 char file[] = "../data/user_data.csv";
 int size = 0;
-/*
-int getFile(){
+
+void getFile(){
     FILE* fp = fopen(file, "r");
     int i=0;
-    if (!fp)
-        return 3;
-    else 
-    {
+    if (!fp){
+        printf("File is empty!!\n");
+    } else {
         char buffer[256];
         int row = 0,column=0;
-        while (fgets(buffer,256, fp)) 
-        {
+        while (fgets(buffer,256, fp)){
             column = 0;
             row++;
             if (row == 1)continue;
@@ -31,15 +28,15 @@ int getFile(){
                 value = strtok(NULL, ",");
                 strcpy(s[i].password,value);
                 value = strtok(NULL, ",");
-                strcpy(s[i].mobile_no, value);
+                strcpy(s[i].mob_no,value);
                 value = strtok(NULL, ",");
                 strcpy(s[i].accNo,value);
                 value = strtok(NULL, ",");
-                s[i].IFSCcode = "PESU0002001";
+                strcpy(s[i].IFSCcode,value);
                 value = strtok(NULL, ",");
                 s[i].balance = strtof(value,NULL);
                 value = strtok(NULL, ",");
-                strcpy(s[i].email, value);
+                strcpy(s[i].email,value);
                 value = strtok(NULL, ",");
                 strcpy(s[i].upiId,value);
                 value = strtok(NULL, ",");
@@ -53,51 +50,10 @@ int getFile(){
         fclose(fp);
     }
     size=i;
+
 }
-*/
-void getFile(customer c[])
-        {
-    FILE* fp = fopen(file, "r");
-    int i=0;
-    if (!fp)
-        printf("File is empty!!\n");
-    else
-    {
-        char buffer[256];
-        int row = 0,column=0;
-        while (fgets(buffer,256, fp))
-        {
-            column = 0;
-            row++;
-            if (row == 1)continue;
 
-            char* value = strtok(buffer, ",");
-
-            while (value)
-            {
-                strcpy(c[i].userName,value);
-                value = strtok(NULL, ",");
-                strcpy(c[i].password,value);
-                value = strtok(NULL, ",");
-                strcpy(c[i].accNo,value);
-                value = strtok(NULL, ",");
-                strcpy(c[i].IFSCcode,value);
-                value = strtok(NULL, ",");
-                c[i].balance = strtof(value,NULL);
-                value = strtok(NULL, ",");
-                strcpy(c[i].upiId,value);
-                value = strtok(NULL, ",");
-                c[i].upiPass = atoi(value);
-                value = strtok(NULL, ",");
-                i++;
-            }
-        }
-        fclose(fp);
-    }
-    size=i;
-        }
-
-void putFile(customer c[]){
+void putFile(){
     FILE* fp = fopen(file, "w");
     int i=0;
     fputs("Username,Password,MobNo,AccountID,IFSC,Balance,Email,UPI_ID,UPI_passcode,Logout_time\n",fp);
@@ -107,21 +63,21 @@ void putFile(customer c[]){
         fputc(',',fp);
         fputs(s[i].password,fp);
         fputc(',',fp);
-        fputs(s[i].mobile_no, fp);
+        fputs(s[i].mob_no, fp);
         fputc(',', fp);
         fputs(s[i].accNo,fp);
         fputc(',',fp);
         fputs(s[i].IFSCcode,fp);
         fputc(',',fp);
         char text[20];
-        sprintf(text, "%.2f", s[i].balance); 
+        sprintf(text, "%.2f", s[i].balance);
         fputs(text,fp);
         fputc(',',fp);
         fputs(s[i].email,fp);
         fputc(',',fp);
         fputs(s[i].upiId,fp);
         fputc(',',fp);
-        sprintf(text, "%d", s[i].upiPass); 
+        sprintf(text, "%d", s[i].upiPass);
         fputs(text,fp);
         sprintf(text, "%.2f", s[i].last_login);
         fputs(text,fp);
@@ -135,10 +91,10 @@ void putFile(customer c[]){
 int get_user_index(char user[]){
     for(int i=0;i<size;i++){
         if(!strcmp(s[i].userName,user))
-            user_index = i;
             return i;
     }
 }
+
 void accGenerator(char *s){
     srand(time(0));
     char str[17]="";
@@ -149,7 +105,7 @@ void accGenerator(char *s){
         str[i]=ch;
     }
     strcpy(s,str);
-}	
+}
 
 int check_user(char user[]){
     for(int i=0;i<size;i++){
@@ -159,7 +115,9 @@ int check_user(char user[]){
     }
 }
 
-int set_upi_pass(int pass){
+int set_upi_pass(int user_index, int pass){
+    s[user_index].upiPass = pass;
+    putFile();
     if(pass>=100000 && pass<=999999){
         s[user_index].upiPass = pass;
         return 1;
@@ -179,54 +137,22 @@ int withdraw(int user_index, float amount){
     return 1;
 }
 
-float get_balance(int user_index){
-    return s[user_index].balance;
-}
-/*
-int upi_transfer(int user_index, int upi_passcode, float amount){
-    char reciever[15], reci[15];
-    int i, checkpass, u, flag = 0;
-    if (s[user_index].upiPass == upi_passcode){
-        u = i;
-        return 1; //PAss case
-    } else {
-        return 2; //Fail case
+//TODO: UPI Transfer missing
 
-    }
-xyz:
-    scanf("%s", &reciever);
-    float cash;
-    for (int i = 0; i < size; i++)
-    {
-        if (strcmp(s[i].upiId, reciever) == '0' || strcmp(s[i].upiId, reciever) == 0)
-        {
-            s[u].balance -= amount;
-            s[i].balance += amount;
-            flag = 1;
-            putFile(s);
-        }
-    }
-    if (flag != 1)
-    {
-        printf("Enter the correct reciever upiID! ");
-        goto xyz;
-    }
-    printf("Money transfer successfull!\n");
-}
-*/
-void signup(const char *username, const char *password, const char *number, const char *email){
+void signup(char username[40], char password[40], char number[10], char email[100]){
     size++;
-    int i = size - 1;
-    char mob_no[15];
+    int i = 0;
+    char mob_no[10];
     strcpy(s[i].userName, username);
     strcpy(s[i].password, password);
-    strcpy(s[i].mobile_no, number);
+    strcpy(s[i].mob_no, number);
     accGenerator(s[i].accNo);
     s[i].balance = 0;
-    strcpy(mob_no, s[i].mobile_no);
+    strcpy(mob_no, s[i].mob_no);
     strcat(mob_no, "@pesu");
     strcpy(s[i].upiId, mob_no);
     s[i].upiPass = 0;
+    putFile();
 }
 
 int login_checker(char username[], char pass[]){
@@ -251,4 +177,13 @@ int login(char username[50], char password[50]){
     else {
         return 2;
     }
+}
+
+int find_user(char username[]){
+    for (int i = 0; i < size; i++){
+        if (strcmp(s[i].userName, username) == '0' || strcmp(s[i].userName, username) == 0) {
+            return 1;
+        }
+    }
+    return 0;
 }

@@ -118,6 +118,39 @@ Bank</property>
                     <property name="y">264</property>
                   </packing>
                 </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_username_err">
+                    <property name="width-request">110</property>
+                    <property name="height-request">30</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Invalid Username or 
+User does not exist</property>
+                    <attributes>
+                      <attribute name="foreground" value="#eded33333b3b"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">415</property>
+                    <property name="y">79</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_login_pass_errr">
+                    <property name="width-request">88</property>
+                    <property name="height-request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Invalid Password</property>
+                    <attributes>
+                      <attribute name="foreground" value="#eded33333b3b"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">415</property>
+                    <property name="y">167</property>
+                  </packing>
+                </child>
               </object>
             </child>
             <child type="tab">
@@ -219,6 +252,7 @@ Bank</property>
                     <property name="primary-icon-tooltip-text" translatable="yes">Retype Password</property>
                     <property name="placeholder-text" translatable="yes">Re-Type Password</property>
                     <property name="input-purpose">password</property>
+                    <signal name="changed" handler="on_entry_new_retype_password_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="x">13</property>
@@ -289,7 +323,7 @@ Bank</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage" id="user_does_not_exist">
+                  <object class="GtkImage" id="img_user_valid">
                     <property name="width-request">30</property>
                     <property name="height-request">30</property>
                     <property name="visible">True</property>
@@ -303,7 +337,7 @@ Bank</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage" id="retype_fail">
+                  <object class="GtkImage" id="retype_success">
                     <property name="width-request">30</property>
                     <property name="height-request">30</property>
                     <property name="visible">True</property>
