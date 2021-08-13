@@ -32,9 +32,7 @@ typedef struct {  //Home Tab
     GtkWidget *g_entry_upi_repass;
     GtkWidget *g_switch_upi;
     GtkWidget *g_upi_img_ok;
-
     //All upi info widgets
-
     GtkWidget *g_lbl_upi_passcode1;
     GtkWidget *g_lbl_upi_handler;
     GtkWidget *g_switch_upi_passcode_visible;
@@ -44,16 +42,13 @@ typedef struct {  //Home Tab
     GtkWidget *g_lbl_name_holder;
     GtkWidget *g_lbl_email_holder;
     GtkWidget *g_lbl_mobile_holder;
-
     GtkWidget *g_entry_new_email;
     GtkWidget *g_entry_new_mobile;
     GtkWidget *g_entry_new_password;
     GtkWidget *g_entry_password_mod;
-
     GtkWidget *g_check_email;
     GtkWidget *g_check_no;
     GtkWidget *g_check_pass;
-
     GtkWidget *g_btn_change_info;
 
 } appWidgets;
@@ -155,7 +150,7 @@ int dashboard_main(int index, int argc, char *argv[]){
 G_MODULE_EXPORT void on_dashboard_main_destroy(){
     gtk_main_quit();
 }
-
+// UPI PI-PIN Update function
 G_MODULE_EXPORT void on_btn_update_upi_clicked (GtkButton *btn_update_upi, appWidgets *app_data){
     gtk_widget_set_visible(app_data->g_upi_img_ok, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_pass_no_match, FALSE);
@@ -177,8 +172,8 @@ G_MODULE_EXPORT void on_btn_update_upi_clicked (GtkButton *btn_update_upi, appWi
     }
 }
 
-G_MODULE_EXPORT void on_btn_logout_clicked (GtkButton *btn_logout){
-    gtk_main_quit();
+G_MODULE_EXPORT void on_btn_logout_clicked (GtkButton *btn_logout, gpointer window){
+    gtk_widget_hide(window);
 }
 
 G_MODULE_EXPORT void on_btn_dashboard_exit_clicked (GtkButton *btn_exit){
@@ -194,9 +189,13 @@ void reload(int index, appWidgets *app_data){
     gtk_label_set_text(app_data->g_lbl_home_upi_passcode,"******");
     gtk_label_set_text(app_data->g_lbl_home_lastlogin,s[index].last_login);
     gtk_label_set_text(app_data->g_lbl_home_acc_id,s[index].accNo);
-    gtk_label_set_text(app_data->g_lbl_home_bal,(int)s[index].balance);
+    //gtk_label_set_text(app_data->g_lbl_home_bal,(int)s[index].balance);
 
-    gtk_label_set_label(app_data->g_lbl_add_bal,(int)s[index].balance);
+    //gtk_label_set_label(app_data->g_lbl_add_bal,(int)s[index].balance);
     gtk_label_set_text(app_data->g_lbl_upi_handler,s[index].upiId);
     gtk_label_set_text(app_data->g_lbl_upi_passcode1,s[index].upiPass);
+}
+// Funds add function
+void on_btn_add_funds_clicked (GtkButton *btn_add_funds, appWidgets *app_data){
+
 }

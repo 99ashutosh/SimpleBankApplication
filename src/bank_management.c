@@ -5,7 +5,6 @@
 #include <string.h>
 #include "bank.h"
 
-
 struct customer s[100];
 char file[] = "../data/user_data.csv";
 int size = 0;
@@ -107,14 +106,6 @@ void accGenerator(char *s){
     strcpy(s,str);
 }
 
-int check_user(char user[]){
-    for(int i=0;i<size;i++){
-        if(!strcmp(s[i].userName,user))
-            return 1;
-        return 0;
-    }
-}
-
 int set_upi_pass(int user_index, int pass){
     s[user_index].upiPass = pass;
     putFile();
@@ -139,17 +130,19 @@ int withdraw(int user_index, float amount){
 
 //TODO: UPI Transfer missing
 
-void signup(char username[40], char password[40], char number[10], char email[100]){
+void signup(char username[32], char password[50], char number[10], char email[100]){
     size++;
-    int i = 0;
+    int i = size-1;
     char mob_no[10];
     strcpy(s[i].userName, username);
     strcpy(s[i].password, password);
     strcpy(s[i].mob_no, number);
+    strcpy(s[i].email, email);
     accGenerator(s[i].accNo);
     s[i].balance = 0;
     strcpy(mob_no, s[i].mob_no);
     strcat(mob_no, "@pesu");
+    printf("%s", mob_no);
     strcpy(s[i].upiId, mob_no);
     s[i].upiPass = 0;
     putFile();
