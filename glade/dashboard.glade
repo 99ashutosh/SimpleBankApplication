@@ -620,6 +620,40 @@
                     <property name="y">103</property>
                   </packing>
                 </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_add_fail1">
+                    <property name="width-request">138</property>
+                    <property name="height-request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Transaction Failed!</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans 12"/>
+                      <attribute name="foreground" value="#e0e01b1b2424"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">103</property>
+                    <property name="y">451</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_add_success1">
+                    <property name="width-request">179</property>
+                    <property name="height-request">22</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Transaction Successful!</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans 13"/>
+                      <attribute name="foreground" value="#2e2ec2c27e7e"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">83</property>
+                    <property name="y">451</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="resize">True</property>
@@ -927,6 +961,40 @@ Reciver's Account</property>
                   </object>
                   <packing>
                     <property name="y">103</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_witd_success">
+                    <property name="width-request">179</property>
+                    <property name="height-request">22</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Transaction Successful!</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans 13"/>
+                      <attribute name="foreground" value="#2e2ec2c27e7e"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">73</property>
+                    <property name="y">446</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_withd_fail">
+                    <property name="width-request">138</property>
+                    <property name="height-request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Transaction Failed!</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans 12"/>
+                      <attribute name="foreground" value="#e0e01b1b2424"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">97</property>
+                    <property name="y">448</property>
                   </packing>
                 </child>
               </object>

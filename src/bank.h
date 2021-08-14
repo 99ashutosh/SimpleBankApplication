@@ -1,14 +1,14 @@
 struct customer {
     char userName[40];
     char password[40];
-    char mob_no[10];
+    char mob_no[11];
     char accNo[40];//16bits long
     char IFSCcode[40];//10bits long
     float balance;
     char email[50];
     char upiId[40];//10bits long
     int upiPass;//6digits
-    char last_login[100];
+    char last_login[50];
 };
 
 //Bank Management Functions

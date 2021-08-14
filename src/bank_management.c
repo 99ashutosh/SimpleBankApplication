@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
-#include <string.h>
 #include "bank.h"
 
 struct customer s[100];
@@ -13,7 +12,7 @@ void getFile(){
     FILE* fp = fopen(file, "r");
     int i=0;
     if (!fp){
-        printf("File is empty!!\n");
+        printf("File is empty or file does not exist.\n");
     } else {
         char buffer[256];
         int row = 0,column=0;
@@ -23,6 +22,8 @@ void getFile(){
             if (row == 1)continue;
             char* value = strtok(buffer, ",");
             while (value){
+                strcpy(s[i].last_login,value);
+                value = strtok(NULL, ",");
                 strcpy(s[i].userName,value);
                 value = strtok(NULL, ",");
                 strcpy(s[i].password,value);
@@ -41,8 +42,6 @@ void getFile(){
                 value = strtok(NULL, ",");
                 s[i].upiPass = atoi(value);
                 value = strtok(NULL, ",");
-                strcpy(s[i].last_login,value);
-                value = strtok(NULL, ",");
                 i++;
             }
         }
@@ -55,9 +54,11 @@ void getFile(){
 void putFile(){
     FILE* fp = fopen(file, "w");
     int i=0;
-    fputs("Username,Password,MobNo,AccountID,IFSC,Balance,Email,UPI_ID,UPI_passcode,Logout_time\n",fp);
+    fputs("Logout_time,Username,Password,MobNo,AccountID,IFSC,Balance,Email,UPI_ID,UPI_passcode\n",fp);
     while(i<size)
     {
+        fputs(s[i].last_login,fp);
+        fputc(',',fp);
         fputs(s[i].userName,fp);
         fputc(',',fp);
         fputs(s[i].password,fp);
@@ -68,7 +69,7 @@ void putFile(){
         fputc(',',fp);
         fputs(s[i].IFSCcode,fp);
         fputc(',',fp);
-        char text[20];
+        char text[20], text2[6];
         sprintf(text, "%.2f", s[i].balance);
         fputs(text,fp);
         fputc(',',fp);
@@ -76,11 +77,8 @@ void putFile(){
         fputc(',',fp);
         fputs(s[i].upiId,fp);
         fputc(',',fp);
-        sprintf(text, "%d", s[i].upiPass);
-        fputs(text,fp);
-        sprintf(text, "%.2f", s[i].last_login);
-        fputs(text,fp);
-        fputc(',',fp);
+        sprintf(text2, "%d", s[i].upiPass);
+        fputs(text2,fp);
         fputs("\n",fp);
         i++;
     }
@@ -92,6 +90,7 @@ int get_user_index(char user[]){
         if(!strcmp(s[i].userName,user))
             return i;
     }
+    return 0;
 }
 
 void accGenerator(char *s){
@@ -119,33 +118,36 @@ int set_upi_pass(int user_index, int pass){
 
 int deposit(int user_index, float cash){
     s[user_index].balance += cash;
-    putFile(s);
+    putFile();
 }
 
 int withdraw(int user_index, float amount){
     s[user_index].balance -= amount;
-    putFile(s);
+    putFile();
     return 1;
 }
 
 //TODO: UPI Transfer missing
 
-void signup(char username[32], char password[50], char number[10], char email[100]){
+void signup(char username[32], char password[50], char number[11], char email[50]){
     size++;
     int i = size-1;
-    char mob_no[10];
+    char mob_no_t[10], buffer[100];
     strcpy(s[i].userName, username);
     strcpy(s[i].password, password);
     strcpy(s[i].mob_no, number);
     strcpy(s[i].email, email);
+    strcpy(s[i].IFSCcode, "PESU0002001");
+    strcpy(buffer, __TIME__);
+    strcat(buffer, "-");
+    strcat(buffer, __DATE__);
+    strcpy(s[i].last_login, buffer);
     accGenerator(s[i].accNo);
     s[i].balance = 0;
-    strcpy(mob_no, s[i].mob_no);
-    strcat(mob_no, "@pesu");
-    printf("%s", mob_no);
-    strcpy(s[i].upiId, mob_no);
+    strcpy(mob_no_t, s[i].mob_no);
+    strcat(mob_no_t, "@pesu");
+    strcpy(s[i].upiId, mob_no_t);
     s[i].upiPass = 0;
-    putFile();
 }
 
 int login_checker(char username[], char pass[]){

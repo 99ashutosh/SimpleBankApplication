@@ -85,15 +85,15 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-G_MODULE_EXPORT void win_destroy() {
+ void win_destroy() {
     gtk_main_quit();
 }
 
-G_MODULE_EXPORT void on_btn_exit_create_clicked() {
+ void on_btn_exit_create_clicked() {
     gtk_main_quit();
 }
 
-G_MODULE_EXPORT void on_btn_exit_clicked() {
+ void on_btn_exit_clicked() {
     gtk_main_quit();
 }
 
@@ -153,9 +153,10 @@ G_MODULE_EXPORT void on_entry_new_username_changed(GtkEditable *entry_new_userna
 G_MODULE_EXPORT void on_btn_greet_create_user_clicked (GtkButton *btn_greet_create_user, appWidgets *app_data){
     const char *username = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_new_username));
     const char *password = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_new_password));
-    const int number = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_new_retype_password));
-    const char *email = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_new_retype_password));
+    const char *number = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_new_mobno));
+    const char *email = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_new_email));
     signup(username, password, number, email);
+    putFile();
 }
 
 G_MODULE_EXPORT void on_btn_login_clicked (GtkButton *btn_login, appWidgets *app_data){
