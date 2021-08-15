@@ -58,7 +58,14 @@ typedef struct {  //Home Tab
     GtkWidget *g_btn_change_info;
 
     //Withdraw Widgets
-
+    GtkWidget *g_lbl_withd_bal;
+    GtkWidget *g_lbl_withd_success;
+    GtkWidget *g_lbl_withd_fail;
+    GtkWidget *g_entry_withd_amt;
+    GtkWidget *g_entry_withd_accid;
+    GtkWidget *g_entry_withd_upir;
+    GtkWidget *g_entry_withd_upipass;
+    GtkWidget *g_entry_withd_pass;
 
 } appWidgets;
 
@@ -121,6 +128,21 @@ int dashboard_main(int index, int argc, char *argv[]){
     app_data->g_check_email = GTK_WIDGET(gtk_builder_get_object(builder, "check_email"));
     app_data->g_btn_change_info = GTK_WIDGET(gtk_builder_get_object(builder, "btn_change_info"));
 
+    //Withdraw widgets defined here
+    app_data->g_lbl_withd_success = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_witd_success"));
+    app_data->g_lbl_withd_fail = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_withd_fail"));
+    app_data->g_lbl_withd_bal = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_withd_bal"));
+    app_data->g_entry_withd_accid = GTK_WIDGET(gtk_builder_get_object(builder, "entry_withd_accid"));
+    app_data->g_entry_withd_upipass = GTK_WIDGET(gtk_builder_get_object(builder, "entry_withd_upi_pass"));
+    app_data->g_entry_withd_upir = GTK_WIDGET(gtk_builder_get_object(builder, "entry_withd_upir"));
+    app_data->g_entry_withd_amt = GTK_WIDGET(gtk_builder_get_object(builder, "entry_withd_amt"));
+    app_data->g_entry_withd_pass = GTK_WIDGET(gtk_builder_get_object(builder, "entry_withd_pass"));
+
+    gchar *bal;
+    gchar *upi_pass;
+    bal = g_strdup_printf("%d", s[index].balance);
+    upi_pass = g_strdup_printf("%d", s[index].upiPass);
+
     //Home Data set
     gtk_label_set_text(app_data->g_lbl_home_name,s[index].userName);
     gtk_label_set_text(app_data->g_lbl_home_email,s[index].email);
@@ -129,18 +151,13 @@ int dashboard_main(int index, int argc, char *argv[]){
     gtk_label_set_text(app_data->g_lbl_home_upi_passcode,"●●●●●●");
     gtk_label_set_text(app_data->g_lbl_home_lastlogin,s[index].last_login);
     gtk_label_set_text(app_data->g_lbl_home_acc_id,s[index].accNo);
-    gchar *bal;
-    bal = g_strdup_printf("%d", s[index].balance);
     gtk_label_set_text(app_data->g_lbl_home_bal,bal);
-
 
     //Add Funds data set
     gtk_label_set_label(app_data->g_lbl_add_bal,bal);
 
     //UPI Data set
     gtk_label_set_text(app_data->g_lbl_upi_handler,s[index].upiId);
-    gchar *upi_pass;
-    upi_pass = g_strdup_printf("%d", s[index].upiPass);
     gtk_label_set_text(app_data->g_lbl_upi_passcode1,upi_pass);
 
     //Account Details (modify) data set
@@ -148,6 +165,8 @@ int dashboard_main(int index, int argc, char *argv[]){
     gtk_label_set_text(app_data->g_lbl_email_holder,s[index].email);
     gtk_label_set_text(app_data->g_lbl_mobile_holder,s[index].mob_no);
 
+    //Withdraw data set
+    gtk_label_set_text(app_data->g_lbl_withd_bal, bal);
     //Visibility
     gtk_widget_set_visible(app_data->g_upi_img_ok, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_pass_no_match, FALSE);
@@ -158,6 +177,8 @@ int dashboard_main(int index, int argc, char *argv[]){
     gtk_widget_set_visible(app_data->g_lbl_curr_pass_incorrect, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_new_set_successful, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_new_set_fail, FALSE);
+    gtk_widget_set_visible(app_data->g_lbl_withd_success, FALSE);
+    gtk_widget_set_visible(app_data->g_lbl_withd_fail, FALSE);
 
     //For UPI
     if (s[user_index].upiPass == 0){
@@ -271,4 +292,9 @@ void on_btn_change_info_clicked (GtkButton *btn_change_info, appWidgets *app_dat
         gtk_widget_set_visible(app_data->g_lbl_curr_pass_incorrect, TRUE);
         gtk_widget_set_visible(app_data->g_lbl_new_set_fail, TRUE);
     }
+}
+
+//Withdraw Function
+void on_btn_withdraw_clicked (GtkButton *btn_withdraw, appWidgets *app_data){
+
 }
