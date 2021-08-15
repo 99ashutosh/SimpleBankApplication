@@ -97,8 +97,7 @@ int main(int argc, char* argv[]) {
     gtk_main_quit();
 }
 
-//TODO: Segfault
-G_MODULE_EXPORT void on_entry_new_password_changed (GtkEditable *entry_new_password, appWidgets *app_data){
+void on_entry_new_password_changed (GtkEditable *entry_new_password, appWidgets *app_data){
     gtk_widget_set_visible(app_data->g_lbl_strong, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_weak, FALSE);
     const char *password = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_new_password));
@@ -116,7 +115,7 @@ G_MODULE_EXPORT void on_entry_new_password_changed (GtkEditable *entry_new_passw
     }
 }
 
-G_MODULE_EXPORT void on_entry_new_retype_password_changed(GtkEditable *entry_new_retype_password, appWidgets *app_data){
+void on_entry_new_retype_password_changed(GtkEditable *entry_new_retype_password, appWidgets *app_data){
     gtk_widget_set_sensitive(app_data->g_btn_greet_create_user, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_retype_err, FALSE);
     gtk_widget_set_visible(app_data->g_img_retype_success, FALSE);
@@ -131,7 +130,7 @@ G_MODULE_EXPORT void on_entry_new_retype_password_changed(GtkEditable *entry_new
     }
 }
 
-G_MODULE_EXPORT void on_entry_new_username_changed(GtkEditable *entry_new_username, appWidgets *app_data){
+void on_entry_new_username_changed(GtkEditable *entry_new_username, appWidgets *app_data){
     gtk_widget_set_sensitive(GTK_BUTTON(app_data->g_btn_greet_create_user), TRUE);
     gtk_spinner_start(GTK_SPINNER(app_data->g_check));
     gtk_widget_set_visible(GTK_LABEL(app_data->g_lbl_user_exists), FALSE);
@@ -150,16 +149,18 @@ G_MODULE_EXPORT void on_entry_new_username_changed(GtkEditable *entry_new_userna
     }
 }
 
-G_MODULE_EXPORT void on_btn_greet_create_user_clicked (GtkButton *btn_greet_create_user, appWidgets *app_data){
+void on_btn_greet_create_user_clicked (GtkButton *btn_greet_create_user, appWidgets *app_data){
     const char *username = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_new_username));
     const char *password = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_new_password));
     const char *number = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_new_mobno));
     const char *email = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_new_email));
     signup(username, password, number, email);
     putFile();
+    int user_index = get_user_index(username);
+    dashboard_main(user_index,'\0','\0');
 }
 
-G_MODULE_EXPORT void on_btn_login_clicked (GtkButton *btn_login, appWidgets *app_data){
+void on_btn_login_clicked (GtkButton *btn_login, appWidgets *app_data){
     gtk_widget_set_visible(app_data->g_lbl_login_user_err, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_login_pass_err, FALSE);
     //	gtk_widget_set_sensitive(g_btn_login, FALSE);

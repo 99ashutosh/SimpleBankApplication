@@ -8,7 +8,7 @@
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">Bank Application</property>
     <property name="window-position">center</property>
-    <property name="icon">..\images\icons\dashboard\main_bank.svg</property>
+    <property name="icon">../images/icons/dashboard/main_bank.svg</property>
     <property name="gravity">center</property>
     <property name="startup-id">bank-appliication</property>
     <signal name="destroy" handler="win_destroy" swapped="no"/>
@@ -75,7 +75,7 @@ Bank</property>
                     <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\account-circle.svg</property>
+                    <property name="primary-icon-pixbuf">../images/icons/svg-dark/account-circle.svg</property>
                     <property name="primary-icon-tooltip-text" translatable="yes">Enter Username</property>
                     <property name="placeholder-text" translatable="yes">Enter Username</property>
                     <property name="input-purpose">name</property>
@@ -93,7 +93,7 @@ Bank</property>
                     <property name="can-focus">True</property>
                     <property name="visibility">False</property>
                     <property name="invisible-char">•</property>
-                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\vpn-key.svg</property>
+                    <property name="primary-icon-pixbuf">../images/icons/svg-dark/vpn-key.svg</property>
                     <property name="primary-icon-tooltip-text" translatable="yes">Enter Password</property>
                     <property name="placeholder-text" translatable="yes">Enter Password</property>
                     <property name="input-purpose">password</property>
@@ -188,7 +188,7 @@ User does not exist</property>
                     <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\account-circle.svg</property>
+                    <property name="primary-icon-pixbuf">../images/icons/svg-dark/account-circle.svg</property>
                     <property name="primary-icon-tooltip-text" translatable="yes">Enter Account Holder Name</property>
                     <property name="placeholder-text" translatable="yes">Enter Account Holder Name</property>
                     <signal name="changed" handler="on_entry_new_username_changed" swapped="no"/>
@@ -218,7 +218,7 @@ User does not exist</property>
                     <property name="can-focus">True</property>
                     <property name="visibility">False</property>
                     <property name="invisible-char">•</property>
-                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\vpn-key.svg</property>
+                    <property name="primary-icon-pixbuf">../images/icons/svg-dark/vpn-key.svg</property>
                     <property name="primary-icon-tooltip-text" translatable="yes">Enter Password</property>
                     <property name="placeholder-text" translatable="yes">Enter Password</property>
                     <property name="input-purpose">password</property>
@@ -248,7 +248,7 @@ User does not exist</property>
                     <property name="can-focus">True</property>
                     <property name="visibility">False</property>
                     <property name="invisible-char">•</property>
-                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\vpn-key.svg</property>
+                    <property name="primary-icon-pixbuf">../images/icons/svg-dark/vpn-key.svg</property>
                     <property name="primary-icon-tooltip-text" translatable="yes">Retype Password</property>
                     <property name="placeholder-text" translatable="yes">Re-Type Password</property>
                     <property name="input-purpose">password</property>
@@ -265,7 +265,7 @@ User does not exist</property>
                     <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\email.svg</property>
+                    <property name="primary-icon-pixbuf">../images/icons/svg-dark/email.svg</property>
                     <property name="primary-icon-tooltip-text" translatable="yes">Enter Email Address</property>
                     <property name="placeholder-text" translatable="yes">Enter E-mail address</property>
                     <property name="input-purpose">email</property>
@@ -281,7 +281,7 @@ User does not exist</property>
                     <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\call.svg</property>
+                    <property name="primary-icon-pixbuf">../images/icons/svg-dark/call.svg</property>
                     <property name="primary-icon-tooltip-text" translatable="yes">Enter Mobile Number</property>
                     <property name="placeholder-text" translatable="yes">Enter Mobile Number</property>
                     <property name="input-purpose">phone</property>

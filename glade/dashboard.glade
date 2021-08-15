@@ -7,7 +7,9 @@
     <property name="height-request">500</property>
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">Dashboard</property>
-    <property name="icon">..\images\icons\dashboard\main_bank.svg</property>
+    <property name="window-position">center</property>
+    <property name="icon">../images/icons/dashboard/main_bank.svg</property>
+    <property name="gravity">center</property>
     <property name="startup-id">Bank Application</property>
     <signal name="destroy" handler="on_dashboard_main_destroy" swapped="no"/>
     <child>
@@ -29,91 +31,110 @@
                 <property name="can-focus">False</property>
                 <child>
                   <object class="GtkLabel" id="lbl_home_bal_wel">
-                    <property name="width-request">133</property>
-                    <property name="height-request">45</property>
+                    <property name="width-request">141</property>
+                    <property name="height-request">39</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Welcome!</property>
                     <attributes>
-                      <attribute name="font-desc" value="Nirmala UI 24"/>
+                      <attribute name="font-desc" value="Fira Sans Bold 24"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">232</property>
-                    <property name="y">6</property>
+                    <property name="x">224</property>
+                    <property name="y">16</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_current_bal">
-                    <property name="width-request">159</property>
-                    <property name="height-request">28</property>
+                    <property name="width-request">147</property>
+                    <property name="height-request">26</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Current Balance:  ₹</property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Semilight, Semi-Light 16"/>
+                      <attribute name="font-desc" value="Fira Sans Semi-Bold 13"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">16</property>
-                    <property name="y">122</property>
+                    <property name="x">10</property>
+                    <property name="y">128</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_home_balance">
-                    <property name="height-request">28</property>
+                    <property name="width-request">20</property>
+                    <property name="height-request">25</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">0</property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Bold 15"/>
+                      <attribute name="font-desc" value="Fira Sans Bold 13"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">189</property>
-                    <property name="y">122</property>
+                    <property name="x">167</property>
+                    <property name="y">128</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_home_accid">
-                    <property name="width-request">103</property>
-                    <property name="height-request">28</property>
+                    <property name="width-request">101</property>
+                    <property name="height-request">23</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Account ID: </property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Semilight, Semi-Light 15"/>
+                      <attribute name="font-desc" value="Fira Sans 14"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">15</property>
-                    <property name="y">83</property>
+                    <property name="x">11</property>
+                    <property name="y">96</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkSeparator" id="home_bal_sep">
                     <property name="width-request">600</property>
+                    <property name="height-request">4</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="orientation">vertical</property>
                   </object>
                   <packing>
-                    <property name="y">174</property>
+                    <property name="y">169</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_home_acc_id">
+                    <property name="width-request">32</property>
+                    <property name="height-request">27</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">0</property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Bold 15"/>
-                      <attribute name="style" value="normal"/>
+                      <attribute name="font-desc" value="Fira Sans Bold 13"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">116</property>
-                    <property name="y">83</property>
+                    <property name="x">107</property>
+                    <property name="y">95</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_home_ID">
+                    <property name="width-request">76</property>
+                    <property name="height-request">22</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Messages</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 13"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">7</property>
+                    <property name="y">179</property>
                   </packing>
                 </child>
               </object>
@@ -128,11 +149,11 @@
                 <property name="can-focus">False</property>
                 <child>
                   <object class="GtkImage" id="home_acc_img">
-                    <property name="width-request">30</property>
-                    <property name="height-request">30</property>
+                    <property name="width-request">34</property>
+                    <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="pixbuf">..\images\icons\svg-dark\account-circle.svg</property>
+                    <property name="pixbuf">../images/icons/svg-dark/account-circle.svg</property>
                   </object>
                   <packing>
                     <property name="x">5</property>
@@ -141,105 +162,111 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_home_acc_details">
+                    <property name="width-request">107</property>
+                    <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Personal Details</property>
                     <attributes>
-                      <attribute name="font-desc" value="Nirmala UI 12"/>
+                      <attribute name="font-desc" value="Fira Sans Semi-Bold 13"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">37</property>
-                    <property name="y">11</property>
+                    <property name="x">39</property>
+                    <property name="y">12</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_home_name">
+                    <property name="width-request">39</property>
+                    <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Name</property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Emoji 10"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">40</property>
-                    <property name="y">48</property>
+                    <property name="x">45</property>
+                    <property name="y">52</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_home_email">
-                    <property name="width-request">31</property>
+                    <property name="width-request">37</property>
                     <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Email</property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Emoji 10"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">40</property>
-                    <property name="y">72</property>
+                    <property name="x">45</property>
+                    <property name="y">84</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_home_mob_no">
-                    <property name="width-request">94</property>
+                    <property name="width-request">104</property>
                     <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Mobile Number</property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Emoji 10"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">40</property>
-                    <property name="y">96</property>
+                    <property name="x">45</property>
+                    <property name="y">112</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_home_upi_handler">
-                    <property name="width-request">67</property>
+                    <property name="width-request">77</property>
                     <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">UPIHandler</property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Emoji 10"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">40</property>
-                    <property name="y">168</property>
+                    <property name="x">45</property>
+                    <property name="y">185</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_home_upi_passcode">
-                    <property name="width-request">79</property>
+                    <property name="width-request">90</property>
                     <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">UPI Passcode</property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Emoji 10"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">40</property>
-                    <property name="y">197</property>
+                    <property name="x">46</property>
+                    <property name="y">219</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkSwitch" id="switch_passcode_visible">
+                    <property name="width-request">50</property>
+                    <property name="height-request">26</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <signal name="activate" handler="on_switch_passcode_visible_activate" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="x">284</property>
-                    <property name="y">195</property>
+                    <property name="x">277</property>
+                    <property name="y">213</property>
                   </packing>
                 </child>
                 <child>
@@ -248,11 +275,11 @@
                     <property name="height-request">24</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="pixbuf">..\images\icons\svg-dark\visibility-off.svg</property>
+                    <property name="pixbuf">../images/icons/svg-dark/visibility-off.svg</property>
                   </object>
                   <packing>
-                    <property name="x">251</property>
-                    <property name="y">196</property>
+                    <property name="x">237</property>
+                    <property name="y">213</property>
                   </packing>
                 </child>
                 <child>
@@ -263,93 +290,91 @@
                     <property name="orientation">vertical</property>
                   </object>
                   <packing>
-                    <property name="y">121</property>
+                    <property name="y">138</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_home_lastlogin">
-                    <property name="width-request">61</property>
-                    <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Last Login</property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Emoji 10"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">34</property>
-                    <property name="y">248</property>
+                    <property name="x">47</property>
+                    <property name="y">264</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkImage" id="img_home_name">
-                    <property name="width-request">24</property>
-                    <property name="height-request">24</property>
+                    <property name="width-request">28</property>
+                    <property name="height-request">29</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="tooltip-text" translatable="yes">Account Holder's Name</property>
-                    <property name="pixbuf">..\images\icons\svg-dark\contacts.svg</property>
+                    <property name="pixbuf">../images/icons/svg-dark/contacts.svg</property>
                   </object>
                   <packing>
-                    <property name="x">8</property>
-                    <property name="y">45</property>
+                    <property name="x">9</property>
+                    <property name="y">47</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkImage" id="img_home_email">
-                    <property name="width-request">24</property>
-                    <property name="height-request">24</property>
+                    <property name="width-request">35</property>
+                    <property name="height-request">28</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="tooltip-text" translatable="yes">Email Address</property>
-                    <property name="pixbuf">..\images\icons\svg-dark\email.svg</property>
+                    <property name="pixbuf">../images/icons/svg-dark/email.svg</property>
                   </object>
                   <packing>
-                    <property name="x">8</property>
-                    <property name="y">71</property>
+                    <property name="x">6</property>
+                    <property name="y">80</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkImage" id="img_home_mobno">
-                    <property name="width-request">24</property>
-                    <property name="height-request">24</property>
+                    <property name="width-request">29</property>
+                    <property name="height-request">27</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="tooltip-text" translatable="yes">Mobile Number</property>
-                    <property name="pixbuf">..\images\icons\svg-dark\call.svg</property>
+                    <property name="pixbuf">../images/icons/svg-dark/call.svg</property>
                   </object>
                   <packing>
-                    <property name="x">8</property>
-                    <property name="y">95</property>
+                    <property name="x">10</property>
+                    <property name="y">109</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkImage" id="img_home_upi_h">
-                    <property name="width-request">24</property>
-                    <property name="height-request">24</property>
+                    <property name="width-request">28</property>
+                    <property name="height-request">27</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="tooltip-text" translatable="yes">UPI Handler</property>
-                    <property name="pixbuf">..\images\icons\svg-dark\account-balance-wallet.svg</property>
+                    <property name="pixbuf">../images/icons/svg-dark/account-balance-wallet.svg</property>
                   </object>
                   <packing>
-                    <property name="x">8</property>
-                    <property name="y">167</property>
+                    <property name="x">7</property>
+                    <property name="y">180</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkImage" id="img_home_upi_p">
-                    <property name="width-request">24</property>
-                    <property name="height-request">24</property>
+                    <property name="width-request">28</property>
+                    <property name="height-request">29</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="tooltip-text" translatable="yes">UPI Passcode</property>
-                    <property name="pixbuf">..\images\icons\svg-dark\vpn-key.svg</property>
+                    <property name="pixbuf">../images/icons/svg-dark/vpn-key.svg</property>
                   </object>
                   <packing>
-                    <property name="x">8</property>
-                    <property name="y">196</property>
+                    <property name="x">9</property>
+                    <property name="y">213</property>
                   </packing>
                 </child>
                 <child>
@@ -361,37 +386,37 @@
                     <property name="orientation">vertical</property>
                   </object>
                   <packing>
-                    <property name="y">37</property>
+                    <property name="y">40</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkImage" id="img_home_lastlogin">
-                    <property name="width-request">24</property>
-                    <property name="height-request">24</property>
+                    <property name="width-request">32</property>
+                    <property name="height-request">29</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="tooltip-text" translatable="yes">Last Login date</property>
-                    <property name="pixbuf">..\images\icons\svg-dark\date-range.svg</property>
+                    <property name="pixbuf">../images/icons/svg-dark/date-range.svg</property>
                   </object>
                   <packing>
-                    <property name="x">6</property>
-                    <property name="y">247</property>
+                    <property name="x">7</property>
+                    <property name="y">258</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_home_upi">
-                    <property name="width-request">61</property>
-                    <property name="height-request">20</property>
+                    <property name="width-request">84</property>
+                    <property name="height-request">22</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">UPI Details</property>
                     <attributes>
-                      <attribute name="font-desc" value="Nirmala UI 12"/>
+                      <attribute name="font-desc" value="Fira Sans Semi-Bold 13"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">87</property>
-                    <property name="y">133</property>
+                    <property name="x">86</property>
+                    <property name="y">146</property>
                   </packing>
                 </child>
                 <child>
@@ -400,11 +425,11 @@
                     <property name="height-request">24</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="pixbuf">..\images\icons\svg\UPI-Color.png</property>
+                    <property name="pixbuf">../images/icons/svg/UPI-Color.png</property>
                   </object>
                   <packing>
-                    <property name="x">8</property>
-                    <property name="y">135</property>
+                    <property name="x">9</property>
+                    <property name="y">146</property>
                   </packing>
                 </child>
                 <child>
@@ -415,34 +440,37 @@
                     <property name="orientation">vertical</property>
                   </object>
                   <packing>
-                    <property name="y">232</property>
+                    <property name="y">247</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_home_ifsc">
-                    <property name="width-request">73</property>
+                    <property name="width-request">88</property>
                     <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">PESU0002001</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                    </attributes>
                   </object>
                   <packing>
-                    <property name="x">35</property>
-                    <property name="y">280</property>
+                    <property name="x">45</property>
+                    <property name="y">299</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkImage" id="img_ifsc">
-                    <property name="width-request">24</property>
-                    <property name="height-request">24</property>
+                    <property name="width-request">29</property>
+                    <property name="height-request">27</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="tooltip-text" translatable="yes">IFSC Code</property>
-                    <property name="pixbuf">..\images\icons\svg-dark\account-balance.svg</property>
+                    <property name="pixbuf">../images/icons/svg-dark/account-balance.svg</property>
                   </object>
                   <packing>
-                    <property name="x">6</property>
-                    <property name="y">276</property>
+                    <property name="x">10</property>
+                    <property name="y">295</property>
                   </packing>
                 </child>
               </object>
@@ -458,7 +486,7 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="tooltip-text" translatable="yes">Home</property>
-            <property name="pixbuf">..\images\icons\dashboard\home.svg</property>
+            <property name="pixbuf">../images/icons/dashboard/home.svg</property>
           </object>
           <packing>
             <property name="tab-fill">False</property>
@@ -477,95 +505,105 @@
                 <property name="can-focus">False</property>
                 <child>
                   <object class="GtkLabel" id="lbl_add_wel1">
+                    <property name="width-request">204</property>
+                    <property name="height-request">25</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Add Money to Account</property>
                     <attributes>
-                      <attribute name="font-desc" value="Nirmala UI 12"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 15"/>
                     </attributes>
                   </object>
                   <packing>
                     <property name="x">12</property>
-                    <property name="y">13</property>
+                    <property name="y">10</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_with1">
-                    <property name="width-request">143</property>
+                    <property name="width-request">246</property>
                     <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Enter Amount to add to this Account</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                    </attributes>
                   </object>
                   <packing>
-                    <property name="x">30</property>
-                    <property name="y">68</property>
+                    <property name="x">15</property>
+                    <property name="y">71</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_add_amt">
                     <property name="width-request">168</property>
-                    <property name="height-request">32</property>
+                    <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\currency-inr.svg</property>
+                    <property name="primary-icon-pixbuf">../images/icons/svg-dark/currency-inr.svg</property>
                   </object>
                   <packing>
-                    <property name="x">245</property>
-                    <property name="y">61</property>
+                    <property name="x">283</property>
+                    <property name="y">66</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="btn_add_funds">
                     <property name="label" translatable="yes">Proceed with Transaction</property>
-                    <property name="width-request">183</property>
-                    <property name="height-request">28</property>
+                    <property name="width-request">203</property>
+                    <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
                     <signal name="clicked" handler="on_btn_add_funds_clicked" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="x">398</property>
-                    <property name="y">454</property>
+                    <property name="x">386</property>
+                    <property name="y">445</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_add_pass1">
                     <property name="width-request">250</property>
-                    <property name="height-request">32</property>
+                    <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="visibility">False</property>
                     <property name="invisible-char">•</property>
                     <property name="placeholder-text" translatable="yes">Enter Password</property>
+                    <property name="input-purpose">password</property>
                   </object>
                   <packing>
-                    <property name="x">8</property>
-                    <property name="y">451</property>
+                    <property name="x">9</property>
+                    <property name="y">445</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_withd_pass1">
-                    <property name="width-request">321</property>
+                    <property name="width-request">413</property>
                     <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">To Proceed with the transaction, please enter your password.</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                    </attributes>
                   </object>
                   <packing>
                     <property name="x">8</property>
-                    <property name="y">424</property>
+                    <property name="y">415</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkSeparator" id="sep_witd1">
                     <property name="width-request">600</property>
+                    <property name="height-request">5</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                   </object>
                   <packing>
-                    <property name="y">39</property>
+                    <property name="y">41</property>
                   </packing>
                 </child>
               </object>
@@ -580,34 +618,32 @@
                 <property name="can-focus">False</property>
                 <child>
                   <object class="GtkLabel" id="lbl_add_info6">
-                    <property name="width-request">111</property>
-                    <property name="height-request">20</property>
+                    <property name="width-request">150</property>
+                    <property name="height-request">25</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Current Balance:</property>
                     <attributes>
-                      <attribute name="font-desc" value="Sans 11"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 15"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">6</property>
-                    <property name="y">9</property>
+                    <property name="x">15</property>
+                    <property name="y">8</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_add_bal">
-                    <property name="width-request">202</property>
-                    <property name="height-request">48</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">&lt;bal here&gt;</property>
                     <attributes>
-                      <attribute name="font-desc" value="Sans 30"/>
+                      <attribute name="font-desc" value="Fira Sans Bold 30"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">8</property>
-                    <property name="y">33</property>
+                    <property name="x">42</property>
+                    <property name="y">42</property>
                   </packing>
                 </child>
                 <child>
@@ -621,7 +657,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="lbl_add_fail1">
+                  <object class="GtkLabel" id="lbl_add_fail">
                     <property name="width-request">138</property>
                     <property name="height-request">20</property>
                     <property name="visible">True</property>
@@ -633,14 +669,14 @@
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">103</property>
-                    <property name="y">451</property>
+                    <property name="x">8</property>
+                    <property name="y">452</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="lbl_add_success1">
+                  <object class="GtkLabel" id="lbl_add_success">
                     <property name="width-request">179</property>
-                    <property name="height-request">22</property>
+                    <property name="height-request">28</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Transaction Successful!</property>
@@ -650,8 +686,24 @@
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">83</property>
-                    <property name="y">451</property>
+                    <property name="x">8</property>
+                    <property name="y">448</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_Add_rupee">
+                    <property name="width-request">22</property>
+                    <property name="height-request">49</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">₹</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Bold 30"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">12</property>
+                    <property name="y">42</property>
                   </packing>
                 </child>
               </object>
@@ -670,7 +722,7 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="tooltip-text" translatable="yes"> Add Funds to Account</property>
-            <property name="pixbuf">..\images\icons\dashboard\add_funds.svg</property>
+            <property name="pixbuf">../images/icons/dashboard/add_funds.svg</property>
           </object>
           <packing>
             <property name="position">1</property>
@@ -690,43 +742,49 @@
                 <property name="can-focus">False</property>
                 <child>
                   <object class="GtkLabel" id="lbl_withd_wel">
+                    <property name="width-request">268</property>
+                    <property name="height-request">23</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Send or Withdraw from Account</property>
                     <attributes>
-                      <attribute name="font-desc" value="Nirmala UI 12"/>
+                      <attribute name="font-desc" value="Fira Sans Bold 14"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">12</property>
-                    <property name="y">13</property>
+                    <property name="x">11</property>
+                    <property name="y">12</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_with">
-                    <property name="width-request">143</property>
+                    <property name="width-request">181</property>
                     <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Enter Amount to withdraw:</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Semi-Bold 12"/>
+                    </attributes>
                   </object>
                   <packing>
-                    <property name="x">30</property>
-                    <property name="y">68</property>
+                    <property name="x">13</property>
+                    <property name="y">70</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_withd_amt">
                     <property name="width-request">168</property>
-                    <property name="height-request">32</property>
+                    <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="primary-icon-pixbuf">..\images\icons\svg-dark\currency-inr.svg</property>
+                    <property name="primary-icon-pixbuf">../images/icons/svg-dark/currency-inr.svg</property>
+                    <property name="input-purpose">digits</property>
                     <signal name="changed" handler="on_entry_withd_amt_changed" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="x">196</property>
-                    <property name="y">59</property>
+                    <property name="x">218</property>
+                    <property name="y">64</property>
                   </packing>
                 </child>
                 <child>
@@ -736,10 +794,13 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Select Method:</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Bold 11"/>
+                    </attributes>
                   </object>
                   <packing>
-                    <property name="x">6</property>
-                    <property name="y">125</property>
+                    <property name="x">13</property>
+                    <property name="y">118</property>
                   </packing>
                 </child>
                 <child>
@@ -751,11 +812,11 @@
                     <property name="can-focus">True</property>
                     <property name="receives-default">False</property>
                     <property name="draw-indicator">True</property>
-                    <property name="group">rad_upi</property>
+                    <property name="group">rad_cred_deb</property>
                   </object>
                   <packing>
-                    <property name="x">44</property>
-                    <property name="y">200</property>
+                    <property name="x">14</property>
+                    <property name="y">206</property>
                   </packing>
                 </child>
                 <child>
@@ -771,53 +832,52 @@
                     <property name="group">rad_cred_deb</property>
                   </object>
                   <packing>
-                    <property name="x">45</property>
-                    <property name="y">247</property>
+                    <property name="x">15</property>
+                    <property name="y">259</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkRadioButton" id="rad_cred_deb">
                     <property name="label" translatable="yes">Credit/Debit</property>
-                    <property name="width-request">69</property>
+                    <property name="width-request">110</property>
                     <property name="height-request">22</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">False</property>
                     <property name="draw-indicator">True</property>
-                    <property name="group">rad_upi</property>
                   </object>
                   <packing>
-                    <property name="x">43</property>
-                    <property name="y">158</property>
+                    <property name="x">12</property>
+                    <property name="y">160</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="btn_withdraw">
                     <property name="label" translatable="yes">Proceed with Transaction</property>
-                    <property name="width-request">183</property>
-                    <property name="height-request">28</property>
+                    <property name="width-request">203</property>
+                    <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
                     <signal name="clicked" handler="on_btn_withdraw_clicked" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="x">398</property>
-                    <property name="y">454</property>
+                    <property name="x">389</property>
+                    <property name="y">451</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_withd_upir">
                     <property name="width-request">350</property>
-                    <property name="height-request">32</property>
+                    <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="placeholder-text" translatable="yes">Enter Reciever's UPI Handler</property>
                     <signal name="changed" handler="on_entry_withd_upir_changed" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="x">116</property>
-                    <property name="y">244</property>
+                    <property name="x">97</property>
+                    <property name="y">257</property>
                   </packing>
                 </child>
                 <child>
@@ -829,6 +889,7 @@
                     <property name="visibility">False</property>
                     <property name="invisible-char">•</property>
                     <property name="placeholder-text" translatable="yes">Enter Password</property>
+                    <property name="input-purpose">password</property>
                   </object>
                   <packing>
                     <property name="x">8</property>
@@ -851,20 +912,21 @@
                 <child>
                   <object class="GtkEntry" id="ent_witd_accid">
                     <property name="width-request">350</property>
-                    <property name="height-request">32</property>
+                    <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="placeholder-text" translatable="yes">Enter Account ID</property>
                     <signal name="changed" handler="on_ent_witd_accid_changed" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="x">116</property>
-                    <property name="y">195</property>
+                    <property name="x">97</property>
+                    <property name="y">203</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkSeparator" id="sep_witd">
                     <property name="width-request">600</property>
+                    <property name="height-request">4</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                   </object>
@@ -875,7 +937,7 @@
                 <child>
                   <object class="GtkEntry" id="entry_withd_upi_pass">
                     <property name="width-request">168</property>
-                    <property name="height-request">30</property>
+                    <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="tooltip-text" translatable="yes">Enter current UPI PI-PIN</property>
@@ -885,8 +947,8 @@
                     <property name="input-purpose">number</property>
                   </object>
                   <packing>
-                    <property name="x">116</property>
-                    <property name="y">292</property>
+                    <property name="x">96</property>
+                    <property name="y">311</property>
                   </packing>
                 </child>
               </object>
@@ -905,6 +967,9 @@
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">For UPI, Enter a UPI Handler to which the
 money has to be sent to.</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                    </attributes>
                   </object>
                   <packing>
                     <property name="x">13</property>
@@ -917,6 +982,9 @@ money has to be sent to.</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">For NEFT, Enter an Account ID linked to the 
 Reciver's Account</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                    </attributes>
                   </object>
                   <packing>
                     <property name="x">11</property>
@@ -925,17 +993,17 @@ Reciver's Account</property>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_info1">
-                    <property name="width-request">111</property>
-                    <property name="height-request">20</property>
+                    <property name="width-request">138</property>
+                    <property name="height-request">23</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Current Balance:</property>
                     <attributes>
-                      <attribute name="font-desc" value="Sans 11"/>
+                      <attribute name="font-desc" value="Fira Sans Bold 14"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">6</property>
+                    <property name="x">12</property>
                     <property name="y">9</property>
                   </packing>
                 </child>
@@ -945,12 +1013,12 @@ Reciver's Account</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">&lt;bal here&gt;</property>
                     <attributes>
-                      <attribute name="font-desc" value="Sans 30"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 30"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">6</property>
-                    <property name="y">29</property>
+                    <property name="x">36</property>
+                    <property name="y">40</property>
                   </packing>
                 </child>
                 <child>
@@ -971,30 +1039,46 @@ Reciver's Account</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Transaction Successful!</property>
                     <attributes>
-                      <attribute name="font-desc" value="Fira Sans 13"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 13"/>
                       <attribute name="foreground" value="#2e2ec2c27e7e"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">73</property>
-                    <property name="y">446</property>
+                    <property name="x">7</property>
+                    <property name="y">454</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_withd_fail">
-                    <property name="width-request">138</property>
-                    <property name="height-request">20</property>
+                    <property name="width-request">144</property>
+                    <property name="height-request">22</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Transaction Failed!</property>
                     <attributes>
-                      <attribute name="font-desc" value="Fira Sans 12"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 13"/>
                       <attribute name="foreground" value="#e0e01b1b2424"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">97</property>
-                    <property name="y">448</property>
+                    <property name="x">7</property>
+                    <property name="y">454</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_withd_rupee1">
+                    <property name="width-request">22</property>
+                    <property name="height-request">49</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">₹</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Bold 30"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">10</property>
+                    <property name="y">39</property>
                   </packing>
                 </child>
               </object>
@@ -1013,7 +1097,7 @@ Reciver's Account</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="tooltip-text" translatable="yes">Withdraw Funds from Account</property>
-            <property name="pixbuf">..\images\icons\dashboard\withdraw.svg</property>
+            <property name="pixbuf">../images/icons/dashboard/withdraw.svg</property>
           </object>
           <packing>
             <property name="position">2</property>
@@ -1033,29 +1117,18 @@ Reciver's Account</property>
                 <property name="can-focus">False</property>
                 <child>
                   <object class="GtkLabel" id="lbl_upi_enable">
-                    <property name="width-request">77</property>
-                    <property name="height-request">21</property>
+                    <property name="width-request">160</property>
+                    <property name="height-request">23</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Enable UPI</property>
+                    <property name="label" translatable="yes">UPI PI-PIN Settings</property>
                     <attributes>
-                      <attribute name="font-desc" value="Nirmala UI 12"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 14"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">15</property>
-                    <property name="y">15</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSwitch" id="switch_upi">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <signal name="activate" handler="on_switch_upi_activate" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="x">97</property>
-                    <property name="y">15</property>
+                    <property name="x">10</property>
+                    <property name="y">14</property>
                   </packing>
                 </child>
                 <child>
@@ -1072,16 +1145,16 @@ Reciver's Account</property>
                 <child>
                   <object class="GtkButton" id="btn_update_upi">
                     <property name="label" translatable="yes">Update UPI Details</property>
-                    <property name="width-request">129</property>
-                    <property name="height-request">32</property>
+                    <property name="width-request">159</property>
+                    <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
                     <signal name="clicked" handler="on_btn_update_upi_clicked" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="x">504</property>
-                    <property name="y">448</property>
+                    <property name="x">462</property>
+                    <property name="y">446</property>
                   </packing>
                 </child>
                 <child>
@@ -1126,7 +1199,7 @@ Reciver's Account</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Only 6-digit code allowed</property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Emoji Oblique 10"/>
+                      <attribute name="font-desc" value="Fira Sans Light Italic 12"/>
                     </attributes>
                   </object>
                   <packing>
@@ -1142,8 +1215,8 @@ Reciver's Account</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Passcodes do not match!</property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Emoji Oblique 10"/>
-                      <attribute name="foreground" value="#c0c01c1c2828"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                      <attribute name="foreground" value="#e0e01b1b2424"/>
                     </attributes>
                   </object>
                   <packing>
@@ -1166,8 +1239,8 @@ Reciver's Account</property>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_upi_info">
-                    <property name="width-request">326</property>
-                    <property name="height-request">42</property>
+                    <property name="width-request">627</property>
+                    <property name="height-request">120</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Enabling UPI will allow you to make direct bank payments to anyone on UPI using their
@@ -1177,18 +1250,16 @@ PI-PIN (UPI Personal Identification Number) is a 6 digit pass code you create/se
 during first time registration. 
 You have to enter this UPI-PIN to authorize all bank transactions.</property>
                     <attributes>
-                      <attribute name="font-desc" value="Nirmala UI 12"/>
+                      <attribute name="font-desc" value="Fira Sans 12"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">14</property>
+                    <property name="x">8</property>
                     <property name="y">53</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_upi_info2">
-                    <property name="width-request">432</property>
-                    <property name="height-request">126</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">UPI ID created in this bank will have the following format:   &lt;mobile_number&gt;@pesu
@@ -1197,46 +1268,12 @@ Mobile number here is the Account Holder's Mobile Number
 This Handler cannot be changed and is unique to every user. 
 Current UPI Handler can be seen on the right pane.</property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Emoji 12"/>
+                      <attribute name="font-desc" value="Fira Sans 12"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">13</property>
-                    <property name="y">187</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="lbl_pass_set">
-                    <property name="width-request">108</property>
-                    <property name="height-request">20</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">UPI Password Set!</property>
-                    <attributes>
-                      <attribute name="font-desc" value="Fira Sans 10"/>
-                      <attribute name="foreground" value="#2e2ec2c27e7e"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="x">360</property>
-                    <property name="y">454</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="lbl_pass_set_fail">
-                    <property name="width-request">131</property>
-                    <property name="height-request">20</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">UPI Password Set fail!</property>
-                    <attributes>
-                      <attribute name="font-desc" value="Fira Sans 10"/>
-                      <attribute name="foreground" value="#e0e01b1b2424"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="x">339</property>
-                    <property name="y">454</property>
+                    <property name="x">8</property>
+                    <property name="y">182</property>
                   </packing>
                 </child>
               </object>
@@ -1251,34 +1288,34 @@ Current UPI Handler can be seen on the right pane.</property>
                 <property name="can-focus">False</property>
                 <child>
                   <object class="GtkLabel" id="lbl_upi_passcode1">
-                    <property name="width-request">86</property>
+                    <property name="width-request">90</property>
                     <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">UPI Passcode</property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Emoji 10"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">35</property>
-                    <property name="y">73</property>
+                    <property name="x">47</property>
+                    <property name="y">91</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_upi_details">
-                    <property name="width-request">65</property>
-                    <property name="height-request">20</property>
+                    <property name="width-request">92</property>
+                    <property name="height-request">23</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">UPI Details</property>
                     <attributes>
-                      <attribute name="font-desc" value="Nirmala UI 10"/>
+                      <attribute name="font-desc" value="Fira Sans Semi-Bold 14"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">83</property>
-                    <property name="y">10</property>
+                    <property name="x">84</property>
+                    <property name="y">6</property>
                   </packing>
                 </child>
                 <child>
@@ -1287,7 +1324,7 @@ Current UPI Handler can be seen on the right pane.</property>
                     <property name="height-request">24</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="pixbuf">..\images\icons\svg\UPI-Color.png</property>
+                    <property name="pixbuf">../images/icons/svg/UPI-Color.png</property>
                   </object>
                   <packing>
                     <property name="x">3</property>
@@ -1300,66 +1337,120 @@ Current UPI Handler can be seen on the right pane.</property>
                     <property name="height-request">24</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="pixbuf">..\images\icons\svg-dark\visibility-off.svg</property>
+                    <property name="pixbuf">../images/icons/svg-dark/visibility-off.svg</property>
                   </object>
                   <packing>
                     <property name="x">199</property>
-                    <property name="y">68</property>
+                    <property name="y">86</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkSwitch" id="switch_upi_passcode_visible">
+                    <property name="width-request">50</property>
+                    <property name="height-request">26</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <signal name="activate" handler="on_switch_upi_passcode_visible_activate" swapped="no"/>
+                    <signal name="state-set" handler="on_switch_upi_passcode_visible_state_set" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="x">232</property>
-                    <property name="y">66</property>
+                    <property name="x">235</property>
+                    <property name="y">85</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_upi_handler">
-                    <property name="width-request">73</property>
+                    <property name="width-request">77</property>
                     <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">UPIHandler</property>
                     <attributes>
-                      <attribute name="font-desc" value="Segoe UI Emoji 10"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">35</property>
-                    <property name="y">41</property>
+                    <property name="x">47</property>
+                    <property name="y">57</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkImage" id="img_upi_h1">
-                    <property name="width-request">24</property>
-                    <property name="height-request">24</property>
+                    <property name="width-request">33</property>
+                    <property name="height-request">32</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="tooltip-text" translatable="yes">UPI Handler</property>
-                    <property name="pixbuf">..\images\icons\svg-dark\account-balance-wallet.svg</property>
+                    <property name="pixbuf">../images/icons/svg-dark/account-balance-wallet.svg</property>
                   </object>
                   <packing>
-                    <property name="x">6</property>
-                    <property name="y">39</property>
+                    <property name="x">5</property>
+                    <property name="y">50</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkImage" id="img_upi_pass">
-                    <property name="width-request">24</property>
-                    <property name="height-request">24</property>
+                    <property name="width-request">38</property>
+                    <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="tooltip-text" translatable="yes">UPI Passcode</property>
-                    <property name="pixbuf">..\images\icons\svg-dark\vpn-key.svg</property>
+                    <property name="pixbuf">../images/icons/svg-dark/vpn-key.svg</property>
                   </object>
                   <packing>
-                    <property name="x">6</property>
-                    <property name="y">69</property>
+                    <property name="x">4</property>
+                    <property name="y">84</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_pass_set_fail">
+                    <property name="width-request">146</property>
+                    <property name="height-request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">UPI Password Set fail!</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                      <attribute name="foreground" value="#e0e01b1b2424"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">9</property>
+                    <property name="y">453</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_pass_set">
+                    <property name="width-request">121</property>
+                    <property name="height-request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">UPI Password Set!</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                      <attribute name="foreground" value="#2e2ec2c27e7e"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">9</property>
+                    <property name="y">453</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_upi_warning">
+                    <property name="width-request">247</property>
+                    <property name="height-request">36</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">UPI Passcode is not set! Set a UPI
+Passcode to use UPI for transactions</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans 12"/>
+                      <attribute name="foreground" value="#e0e01b1b2424"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">12</property>
+                    <property name="y">122</property>
                   </packing>
                 </child>
               </object>
@@ -1378,7 +1469,7 @@ Current UPI Handler can be seen on the right pane.</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="tooltip-text" translatable="yes">UPI</property>
-            <property name="pixbuf">..\images\icons\dashboard\upi.svg</property>
+            <property name="pixbuf">../images/icons/dashboard/upi.svg</property>
           </object>
           <packing>
             <property name="position">3</property>
@@ -1397,58 +1488,19 @@ Current UPI Handler can be seen on the right pane.</property>
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <child>
-                  <object class="GtkEntry" id="entry_new_email">
-                    <property name="width-request">350</property>
-                    <property name="height-request">32</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="placeholder-text" translatable="yes">Enter New Email Address</property>
-                    <property name="input-purpose">email</property>
-                  </object>
-                  <packing>
-                    <property name="x">39</property>
-                    <property name="y">217</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkLabel" id="lbl_curr_info">
+                    <property name="width-request">161</property>
+                    <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Current Account Details:</property>
+                    <property name="label" translatable="yes">Current Account Details</property>
                     <attributes>
-                      <attribute name="font-desc" value="Nirmala UI 12"/>
+                      <attribute name="font-desc" value="Fira Sans Bold 14"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">4</property>
-                    <property name="y">6</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkEntry" id="entry_new_mobile">
-                    <property name="width-request">350</property>
-                    <property name="height-request">32</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="placeholder-text" translatable="yes">Enter new Mobile number</property>
-                    <property name="input-purpose">digits</property>
-                  </object>
-                  <packing>
-                    <property name="x">39</property>
-                    <property name="y">279</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkCheckButton" id="check_email">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">False</property>
-                    <property name="draw-indicator">True</property>
-                    <signal name="toggled" handler="on_check_email_toggled" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="x">11</property>
-                    <property name="y">226</property>
+                    <property name="x">7</property>
+                    <property name="y">7</property>
                   </packing>
                 </child>
                 <child>
@@ -1458,10 +1510,13 @@ Current UPI Handler can be seen on the right pane.</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">&lt;Name Here&gt;</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Semi-Bold 12"/>
+                    </attributes>
                   </object>
                   <packing>
-                    <property name="x">169</property>
-                    <property name="y">34</property>
+                    <property name="x">217</property>
+                    <property name="y">43</property>
                   </packing>
                 </child>
                 <child>
@@ -1471,10 +1526,13 @@ Current UPI Handler can be seen on the right pane.</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Account Holder Name:</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans 12"/>
+                    </attributes>
                   </object>
                   <packing>
-                    <property name="x">9</property>
-                    <property name="y">34</property>
+                    <property name="x">7</property>
+                    <property name="y">43</property>
                   </packing>
                 </child>
                 <child>
@@ -1484,10 +1542,13 @@ Current UPI Handler can be seen on the right pane.</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Current Email Address:</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans 12"/>
+                    </attributes>
                   </object>
                   <packing>
-                    <property name="x">8</property>
-                    <property name="y">57</property>
+                    <property name="x">6</property>
+                    <property name="y">99</property>
                   </packing>
                 </child>
                 <child>
@@ -1497,10 +1558,13 @@ Current UPI Handler can be seen on the right pane.</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">&lt;Email Here&gt;</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Semi-Bold 12"/>
+                    </attributes>
                   </object>
                   <packing>
-                    <property name="x">168</property>
-                    <property name="y">57</property>
+                    <property name="x">217</property>
+                    <property name="y">71</property>
                   </packing>
                 </child>
                 <child>
@@ -1510,10 +1574,13 @@ Current UPI Handler can be seen on the right pane.</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Current Mobile Number:</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans 12"/>
+                    </attributes>
                   </object>
                   <packing>
-                    <property name="x">8</property>
-                    <property name="y">80</property>
+                    <property name="x">7</property>
+                    <property name="y">71</property>
                   </packing>
                 </child>
                 <child>
@@ -1523,83 +1590,70 @@ Current UPI Handler can be seen on the right pane.</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">&lt;Mobile number here&gt;</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Semi-Bold 12"/>
+                    </attributes>
                   </object>
                   <packing>
-                    <property name="x">175</property>
-                    <property name="y">80</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkEntry" id="entry_new_password">
-                    <property name="width-request">350</property>
-                    <property name="height-request">32</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="visibility">False</property>
-                    <property name="invisible-char">•</property>
-                    <property name="placeholder-text" translatable="yes">Enter new Password</property>
-                  </object>
-                  <packing>
-                    <property name="x">39</property>
-                    <property name="y">341</property>
+                    <property name="x">217</property>
+                    <property name="y">99</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_upi">
+                    <property name="width-request">271</property>
+                    <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">For UPI details, please go to the UPI tab.</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Bold 11"/>
+                    </attributes>
                   </object>
                   <packing>
-                    <property name="x">6</property>
-                    <property name="y">110</property>
+                    <property name="x">3</property>
+                    <property name="y">125</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkSeparator" id="sep_curr_acc_sett">
                     <property name="width-request">600</property>
+                    <property name="height-request">3</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="orientation">vertical</property>
                   </object>
                   <packing>
-                    <property name="y">27</property>
+                    <property name="y">33</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_mod_info">
+                    <property name="width-request">426</property>
+                    <property name="height-request">36</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">To change details, simply tick the box on left and enter details. 
-After changes, click on "Change Account Details"</property>
+                    <property name="label" translatable="yes">To change details, simply tick the box on left and enter details. After changes, 
+click on  "Change Account Details"</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                    </attributes>
                   </object>
                   <packing>
-                    <property name="x">5</property>
-                    <property name="y">166</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkCheckButton" id="check_no">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">False</property>
-                    <property name="draw-indicator">True</property>
-                    <signal name="toggled" handler="on_check_no_toggled" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="x">11</property>
-                    <property name="y">290</property>
+                    <property name="x">9</property>
+                    <property name="y">185</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkSeparator" id="sep_2">
                     <property name="width-request">600</property>
+                    <property name="height-request">3</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="orientation">vertical</property>
                   </object>
                   <packing>
-                    <property name="y">133</property>
+                    <property name="y">152</property>
                   </packing>
                 </child>
                 <child>
@@ -1610,53 +1664,84 @@ After changes, click on "Change Account Details"</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Modify Account Details</property>
                     <attributes>
-                      <attribute name="font-desc" value="Nirmala UI 12"/>
+                      <attribute name="font-desc" value="Fira Sans Bold 14"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">5</property>
-                    <property name="y">142</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkCheckButton" id="check_pass">
-                    <property name="label" translatable="yes">
-</property>
-                    <property name="width-request">28</property>
-                    <property name="height-request">34</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">False</property>
-                    <property name="draw-indicator">True</property>
-                    <signal name="toggled" handler="on_check_pass_toggled" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="x">8</property>
-                    <property name="y">340</property>
+                    <property name="x">9</property>
+                    <property name="y">159</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_info">
-                    <property name="width-request">419</property>
+                    <property name="width-request">530</property>
                     <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Account information will only be updated on clicking "Change Account Details"</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Semi-Bold 12"/>
+                    </attributes>
                   </object>
                   <packing>
-                    <property name="x">6</property>
-                    <property name="y">402</property>
+                    <property name="x">8</property>
+                    <property name="y">400</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_inf1">
+                    <property name="width-request">430</property>
+                    <property name="height-request">20</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Note that details like Account Holder Name cannot be modified.</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Semi-Bold 12"/>
+                    </attributes>
                   </object>
                   <packing>
                     <property name="x">6</property>
-                    <property name="y">430</property>
+                    <property name="y">424</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_new_email">
+                    <property name="width-request">300</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="placeholder-text" translatable="yes">Enter New Email Address</property>
+                    <property name="input-purpose">email</property>
+                  </object>
+                  <packing>
+                    <property name="x">15</property>
+                    <property name="y">234</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_new_mobile">
+                    <property name="width-request">300</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="placeholder-text" translatable="yes">Enter new Mobile number</property>
+                    <property name="input-purpose">digits</property>
+                  </object>
+                  <packing>
+                    <property name="x">15</property>
+                    <property name="y">287</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_new_password">
+                    <property name="width-request">300</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="visibility">False</property>
+                    <property name="invisible-char">•</property>
+                    <property name="placeholder-text" translatable="yes">Enter new Password</property>
+                  </object>
+                  <packing>
+                    <property name="x">15</property>
+                    <property name="y">339</property>
                   </packing>
                 </child>
               </object>
@@ -1671,19 +1756,25 @@ After changes, click on "Change Account Details"</property>
                 <property name="can-focus">False</property>
                 <child>
                   <object class="GtkLabel" id="lbl_change_info">
+                    <property name="width-request">288</property>
+                    <property name="height-request">40</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">To continue with changes, Please enter current Password</property>
+                    <property name="label" translatable="yes">To continue with changes, Please enter 
+current password</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                    </attributes>
                   </object>
                   <packing>
-                    <property name="x">7</property>
-                    <property name="y">9</property>
+                    <property name="x">23</property>
+                    <property name="y">165</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkEntry" id="ent_pass">
                     <property name="width-request">285</property>
-                    <property name="height-request">32</property>
+                    <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="visibility">False</property>
@@ -1691,23 +1782,72 @@ After changes, click on "Change Account Details"</property>
                     <property name="placeholder-text" translatable="yes">Enter Current Password</property>
                   </object>
                   <packing>
-                    <property name="x">19</property>
-                    <property name="y">32</property>
+                    <property name="x">28</property>
+                    <property name="y">220</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="btn_change_info">
                     <property name="label" translatable="yes">Change Account Details</property>
-                    <property name="width-request">170</property>
-                    <property name="height-request">32</property>
+                    <property name="width-request">190</property>
+                    <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
                     <signal name="clicked" handler="on_btn_change_info_clicked" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="x">74</property>
-                    <property name="y">73</property>
+                    <property name="x">82</property>
+                    <property name="y">272</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_acc_success">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Account Details Changed Successfully!</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 13"/>
+                      <attribute name="foreground" value="#2e2ec2c27e7e"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">23</property>
+                    <property name="y">409</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_acc_fail">
+                    <property name="width-request">232</property>
+                    <property name="height-request">22</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Account Details Change Failed</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 13"/>
+                      <attribute name="foreground" value="#e0e01b1b2424"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">23</property>
+                    <property name="y">408</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_pass_incorrect">
+                    <property name="width-request">216</property>
+                    <property name="height-request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Entered Password is Incorrect</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 13"/>
+                      <attribute name="foreground" value="#c0c01c1c2828"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">23</property>
+                    <property name="y">381</property>
                   </packing>
                 </child>
               </object>
@@ -1726,7 +1866,7 @@ After changes, click on "Change Account Details"</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="tooltip-text" translatable="yes">Account Settings</property>
-            <property name="pixbuf">..\images\icons\dashboard\acc_settings.svg</property>
+            <property name="pixbuf">../images/icons/dashboard/acc_settings.svg</property>
           </object>
           <packing>
             <property name="position">4</property>
@@ -1747,27 +1887,31 @@ After changes, click on "Change Account Details"</property>
                 <child>
                   <object class="GtkButton" id="btn_logout">
                     <property name="label" translatable="yes">Log out of Account</property>
+                    <property name="width-request">161</property>
+                    <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
                     <signal name="clicked" handler="on_btn_logout_clicked" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="x">68</property>
-                    <property name="y">159</property>
+                    <property name="x">40</property>
+                    <property name="y">146</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="btn_exit">
                     <property name="label" translatable="yes">Logout and Exit Program</property>
+                    <property name="width-request">198</property>
+                    <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
                     <signal name="clicked" handler="on_btn_dashboard_exit_clicked" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="x">68</property>
-                    <property name="y">220</property>
+                    <property name="x">41</property>
+                    <property name="y">223</property>
                   </packing>
                 </child>
               </object>
@@ -1782,11 +1926,11 @@ After changes, click on "Change Account Details"</property>
                 <property name="can-focus">False</property>
                 <child>
                   <object class="GtkImage" id="img_about">
-                    <property name="width-request">24</property>
-                    <property name="height-request">24</property>
+                    <property name="width-request">32</property>
+                    <property name="height-request">27</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="pixbuf">..\images\icons\svg-dark\group.svg</property>
+                    <property name="pixbuf">../images/icons/svg-dark/group.svg</property>
                   </object>
                   <packing>
                     <property name="x">13</property>
@@ -1795,32 +1939,26 @@ After changes, click on "Change Account Details"</property>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_about">
-                    <property name="width-request">160</property>
+                    <property name="width-request">178</property>
                     <property name="height-request">25</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">About this Program</property>
                     <attributes>
-                      <attribute name="font-desc" value="Nirmala UI 14"/>
+                      <attribute name="font-desc" value="Fira Sans Bold 15"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">42</property>
-                    <property name="y">14</property>
+                    <property name="x">53</property>
+                    <property name="y">15</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lbl_about_2">
-                    <property name="width-request">604</property>
-                    <property name="height-request">220</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Bank Application
-
-
-This project aims to show how banks works by simulating the various operations that happen
-in complex
-banking systems.
+                    <property name="label" translatable="yes">This project aims to show how banks works by simulating the various operations 
+that happen in complex banking systems.
 
 Program written in C.
 
@@ -1829,12 +1967,12 @@ Ashutosh
 Ashutosh Routray
 Claudius D Souza</property>
                     <attributes>
-                      <attribute name="font-desc" value="Nirmala UI 11"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
                     </attributes>
                   </object>
                   <packing>
-                    <property name="x">13</property>
-                    <property name="y">162</property>
+                    <property name="x">19</property>
+                    <property name="y">239</property>
                   </packing>
                 </child>
                 <child>
@@ -1843,11 +1981,27 @@ Claudius D Souza</property>
                     <property name="height-request">80</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="pixbuf">..\images\icons\png\2x\account-balance.png</property>
+                    <property name="pixbuf">../images/icons/png/2x/account-balance.png</property>
                   </object>
                   <packing>
                     <property name="x">268</property>
                     <property name="y">60</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_abt_info">
+                    <property name="width-request">144</property>
+                    <property name="height-request">23</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Bank Application</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Bold 14"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">20</property>
+                    <property name="y">201</property>
                   </packing>
                 </child>
               </object>
@@ -1866,7 +2020,7 @@ Claudius D Souza</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="tooltip-text" translatable="yes">Logout</property>
-            <property name="pixbuf">..\images\icons\dashboard\logout.svg</property>
+            <property name="pixbuf">../images/icons/dashboard/logout.svg</property>
           </object>
           <packing>
             <property name="position">5</property>
