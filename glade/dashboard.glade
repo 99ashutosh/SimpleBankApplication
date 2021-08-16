@@ -780,7 +780,6 @@
                     <property name="can-focus">True</property>
                     <property name="primary-icon-pixbuf">../images/icons/svg-dark/currency-inr.svg</property>
                     <property name="input-purpose">digits</property>
-                    <signal name="changed" handler="on_entry_withd_amt_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="x">218</property>
@@ -845,6 +844,7 @@
                     <property name="can-focus">True</property>
                     <property name="receives-default">False</property>
                     <property name="draw-indicator">True</property>
+                    <signal name="toggled" handler="on_rad_cred_deb_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="x">12</property>
@@ -873,7 +873,6 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="placeholder-text" translatable="yes">Enter Reciever's UPI Handler</property>
-                    <signal name="changed" handler="on_entry_withd_upir_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="x">97</property>
@@ -903,6 +902,9 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">To Proceed with the transaction, please enter your password.</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                    </attributes>
                   </object>
                   <packing>
                     <property name="x">8</property>
@@ -916,7 +918,6 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="placeholder-text" translatable="yes">Enter Account ID</property>
-                    <signal name="changed" handler="on_ent_witd_accid_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="x">97</property>

@@ -131,7 +131,7 @@ void on_entry_new_retype_password_changed(GtkEditable *entry_new_retype_password
 }
 
 void on_entry_new_username_changed(GtkEditable *entry_new_username, appWidgets *app_data){
-    gtk_widget_set_sensitive(GTK_BUTTON(app_data->g_btn_greet_create_user), TRUE);
+    gtk_widget_set_sensitive(GTK_BUTTON(app_data->g_btn_greet_create_user), FALSE);
     gtk_spinner_start(GTK_SPINNER(app_data->g_check));
     gtk_widget_set_visible(GTK_LABEL(app_data->g_lbl_user_exists), FALSE);
     gtk_widget_set_visible(GTK_IMAGE(app_data->g_img_user_valid), FALSE);

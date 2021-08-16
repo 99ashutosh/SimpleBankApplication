@@ -61,6 +61,9 @@ typedef struct {  //Home Tab
     GtkWidget *g_lbl_withd_bal;
     GtkWidget *g_lbl_withd_success;
     GtkWidget *g_lbl_withd_fail;
+    GtkWidget *g_radio_cred;
+    GtkWidget *g_radio_neft;
+    GtkWidget *g_radio_upi;
     GtkWidget *g_entry_withd_amt;
     GtkWidget *g_entry_withd_accid;
     GtkWidget *g_entry_withd_upir;
@@ -132,11 +135,14 @@ int dashboard_main(int index, int argc, char *argv[]){
     app_data->g_lbl_withd_success = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_witd_success"));
     app_data->g_lbl_withd_fail = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_withd_fail"));
     app_data->g_lbl_withd_bal = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_withd_bal"));
-    app_data->g_entry_withd_accid = GTK_WIDGET(gtk_builder_get_object(builder, "entry_withd_accid"));
+    app_data->g_entry_withd_accid = GTK_WIDGET(gtk_builder_get_object(builder, "ent_witd_accid"));
     app_data->g_entry_withd_upipass = GTK_WIDGET(gtk_builder_get_object(builder, "entry_withd_upi_pass"));
     app_data->g_entry_withd_upir = GTK_WIDGET(gtk_builder_get_object(builder, "entry_withd_upir"));
     app_data->g_entry_withd_amt = GTK_WIDGET(gtk_builder_get_object(builder, "entry_withd_amt"));
     app_data->g_entry_withd_pass = GTK_WIDGET(gtk_builder_get_object(builder, "entry_withd_pass"));
+    app_data->g_radio_upi = GTK_WIDGET(gtk_builder_get_object(builder, "rad_upi"));
+    app_data->g_radio_neft = GTK_WIDGET(gtk_builder_get_object(builder, "rad_neft"));
+    app_data->g_radio_cred = GTK_WIDGET(gtk_builder_get_object(builder, "rad_cred_deb"));
 
     gchar *bal;
     gchar *upi_pass;
@@ -179,7 +185,11 @@ int dashboard_main(int index, int argc, char *argv[]){
     gtk_widget_set_visible(app_data->g_lbl_new_set_fail, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_withd_success, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_withd_fail, FALSE);
-
+    /*
+    gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_upir), FALSE);
+    gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_upipass), FALSE);
+    gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_accid), FALSE);
+    */
     //For UPI
     if (s[user_index].upiPass == 0){
         gtk_widget_set_visible(app_data->g_lbl_upi_warning, TRUE);
@@ -296,5 +306,52 @@ void on_btn_change_info_clicked (GtkButton *btn_change_info, appWidgets *app_dat
 
 //Withdraw Function
 void on_btn_withdraw_clicked (GtkButton *btn_withdraw, appWidgets *app_data){
-
+    gchar *bal2;
+    const char *amount = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_withd_amt));
+    const char *acc_id = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_withd_accid));
+    const char *upi_pass = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_withd_upipass));
+    const char *upi_rec = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_withd_upir));
+    const char *password = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_withd_pass));
+    if (pass_check(user_index, password)==1){
+        if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(app_data->g_radio_cred))){
+            withdraw(user_index, amount);
+            bal2 = g_strdup_printf("%d", s[user_index].balance);
+            gtk_label_set_text(app_data->g_lbl_withd_bal, bal2);
+            gtk_widget_set_visible(app_data->g_lbl_withd_success, TRUE);
+        }
+        else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(app_data->g_radio_neft))){
+            neft_withdraw(user_index, amount, acc_id);
+            bal2 = g_strdup_printf("%d", s[user_index].balance);
+            gtk_label_set_text(app_data->g_lbl_withd_bal, bal2);
+            gtk_widget_set_visible(app_data->g_lbl_withd_success, TRUE);
+        } else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(app_data->g_radio_upi))) {
+            if (upi_transfer(user_index, upi_pass, amount, upi_rec) == 1){
+                bal2 = g_strdup_printf("%d", s[user_index].balance);
+                gtk_label_set_text(app_data->g_lbl_withd_bal, bal2);
+                gtk_widget_set_visible(app_data->g_lbl_withd_success, TRUE);
+            } else {
+                gtk_widget_set_visible(app_data->g_lbl_withd_fail, TRUE);
+            }
+        } else {
+            gtk_widget_set_visible(app_data->g_lbl_withd_fail, TRUE);
+        }
+    } else {
+        gtk_widget_set_visible(app_data->g_lbl_withd_fail, TRUE);
+    }
+    putFile();
+    g_free(bal2);
 }
+/*
+void on_rad_cred_deb_toggled(GtkToggleButton *togglebutton, appWidgets *app_data){
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(app_data->g_radio_cred))){
+        gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_upir), FALSE);
+        gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_upipass), FALSE);
+        gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_accid), FALSE);
+    } else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(app_data->g_radio_neft))) {
+        gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_accid), TRUE);
+    } else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(app_data->g_radio_upi))) {
+        gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_upir), TRUE);
+        gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_upipass), TRUE);
+    }
+}
+ */

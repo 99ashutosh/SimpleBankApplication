@@ -138,14 +138,41 @@ int deposit(int user_index, char *amount){
     return 0;
 }
 
-int withdraw(int user_index, char amount[500]){
-    float cash = atof(amount);
-    s[user_index].balance -= cash;
-    putFile();
-    return 1;
+int withdraw(int user_index, char *amount){
+    int amount1 = atoi(amount);
+    s[user_index].balance = s[user_index].balance - amount1;
+    return 0;
 }
 
-//TODO: UPI Transfer missing
+int neft_withdraw(int user_index, char *amount, char *acc_id){
+    int amount1 = atoi(amount);
+    int receiver = 0;
+    for (int i = 0; i < size; i++){
+        if (strcmp(s[i].accNo, acc_id) == '0' || strcmp(s[i].accNo, acc_id) == 0) {
+            receiver = i;
+        }
+    }
+    s[user_index].balance = s[user_index].balance - amount1;
+    s[receiver].balance += amount1;
+    return 0;
+}
+int upi_transfer(int user_index, char *pass, char *amount, char *upi_rec){
+    int amount1 = atoi(amount);
+    int pass1 = atoi(pass);
+    if (s[user_index].upiPass == pass1){
+        int receiver = 0;
+        for (int i = 0; i < size; i++){
+            if (strcmp(s[i].upiId, upi_rec) == '0' || strcmp(s[i].upiId, upi_rec) == 0) {
+                receiver = i;
+            }
+        }
+        s[user_index].balance = s[user_index].balance - amount1;
+        s[receiver].balance += amount1;
+        return 1;
+    } else {
+        return 0;
+    }
+}
 
 void signup(char username[40], char password[40], char number[11], char email[50]){
     size++;
