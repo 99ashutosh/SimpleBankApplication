@@ -150,6 +150,8 @@ int neft_withdraw(int user_index, char *amount, char *acc_id){
     for (int i = 0; i < size; i++){
         if (strcmp(s[i].accNo, acc_id) == '0' || strcmp(s[i].accNo, acc_id) == 0) {
             receiver = i;
+        } else {
+            return 1;
         }
     }
     s[user_index].balance = s[user_index].balance - amount1;
@@ -164,6 +166,8 @@ int upi_transfer(int user_index, char *pass, char *amount, char *upi_rec){
         for (int i = 0; i < size; i++){
             if (strcmp(s[i].upiId, upi_rec) == '0' || strcmp(s[i].upiId, upi_rec) == 0) {
                 receiver = i;
+            } else {
+                return 2;
             }
         }
         s[user_index].balance = s[user_index].balance - amount1;

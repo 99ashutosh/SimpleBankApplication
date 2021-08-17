@@ -868,7 +868,7 @@
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_withd_upir">
-                    <property name="width-request">350</property>
+                    <property name="width-request">310</property>
                     <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
@@ -913,7 +913,7 @@
                 </child>
                 <child>
                   <object class="GtkEntry" id="ent_witd_accid">
-                    <property name="width-request">350</property>
+                    <property name="width-request">310</property>
                     <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
@@ -950,6 +950,76 @@
                   <packing>
                     <property name="x">96</property>
                     <property name="y">311</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_withd_no_amt">
+                    <property name="width-request">124</property>
+                    <property name="height-request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Enter an Amount!</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                      <attribute name="foreground" value="#e0e01b1b2424"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">396</property>
+                    <property name="y">72</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_withd_accid_err">
+                    <property name="width-request">121</property>
+                    <property name="height-request">40</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Account ID not in
+Bank Database</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                      <attribute name="foreground" value="#c0c01c1c2828"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">425</property>
+                    <property name="y">201</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_withd_upi_rec_fail">
+                    <property name="width-request">167</property>
+                    <property name="height-request">40</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Reciever's UPI Handler
+not found</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                      <attribute name="foreground" value="#c0c01c1c2828"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">424</property>
+                    <property name="y">252</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_withd_upi_pass_err">
+                    <property name="width-request">142</property>
+                    <property name="height-request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">UPI PI-PIN Incorrect</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                      <attribute name="foreground" value="#c0c01c1c2828"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">273</property>
+                    <property name="y">318</property>
                   </packing>
                 </child>
               </object>
@@ -1080,6 +1150,23 @@ Reciver's Account</property>
                   <packing>
                     <property name="x">10</property>
                     <property name="y">39</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_withd_pass_err">
+                    <property name="width-request">142</property>
+                    <property name="height-request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Incorrect Password!</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 12"/>
+                      <attribute name="foreground" value="#e0e01b1b2424"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">8</property>
+                    <property name="y">427</property>
                   </packing>
                 </child>
               </object>

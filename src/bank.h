@@ -26,9 +26,12 @@ int pass_check(int user_index, char pass[40]);
 int set_upi_pass(int user_index, char *pass);
 void modify_details(int user_index, char password[40], char number[11], char email[50]);
 
+//Encrypt Decrypt
+char encrypt(char *a);
+char decrypt(char *a);
+
 //Greet Functions
 int greet_main();
-
 
 //Dashboard Functions
 int dashboard_main(int index, int argc, char *argv[]);

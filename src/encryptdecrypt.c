@@ -1,15 +1,14 @@
 #include<string.h>
-#include<stdio.h>
-
+#include "bank.h"
+#include <stdio.h>
 char custom[]="";
 char A[]="LOREM";
 char B[]="IPSUM";
 char C[]="CONSE";
 char D[]="CRATO";
 
-void encrypt(char *a)
-{
-    char n[40];
+char encrypt(char *a){
+    char n[500];
     int l=strlen(a);
     int count=0;
     for(int i=0;i<l;i++)
@@ -32,7 +31,6 @@ void encrypt(char *a)
         else
         {
             n[i]=(a[i]^D[count]);
-            
         }
         if(n[i]=='\n')
         n[i]='!';
@@ -80,12 +78,12 @@ void encrypt(char *a)
         if(count==5)
         count=0;
     }
-    n[39]='\0';
-    //printf("%s",n);
-    strcpy(a,n);
+    n[499]='\0';
+    printf("%s",n);
+    //return n;
 }
 // Decrypt Function
-void decrypt(char *a)
+char decrypt(char *a)
 {
     int l;
     for(int i=0;i<40;i++)
@@ -134,6 +132,9 @@ void decrypt(char *a)
     }
     n[l]='\0';
     //printf("%s",n);
-    strcpy(a,n);
+    return n;
 }
 
+int main(){
+    encrypt("Logout_time,Username");
+}

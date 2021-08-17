@@ -158,9 +158,10 @@ void on_btn_greet_create_user_clicked (GtkButton *btn_greet_create_user, appWidg
     putFile();
     int user_index = get_user_index(username);
     dashboard_main(user_index,'\0','\0');
+    gtk_main_quit();
 }
 
-void on_btn_login_clicked (GtkButton *btn_login, appWidgets *app_data){
+void on_btn_login_clicked (GtkButton *btn_login, appWidgets *app_data, GtkWidget *greet_main_window){
     gtk_widget_set_visible(app_data->g_lbl_login_user_err, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_login_pass_err, FALSE);
     //	gtk_widget_set_sensitive(g_btn_login, FALSE);
@@ -173,6 +174,6 @@ void on_btn_login_clicked (GtkButton *btn_login, appWidgets *app_data){
     } else if (login(username,password)==0){
         int user_index = get_user_index(username);
         dashboard_main(user_index,'\0','\0');
-
+        gtk_main_quit();
     }
 }
