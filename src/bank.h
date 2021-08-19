@@ -1,14 +1,14 @@
 struct customer {
     char userName[40];
     char password[40];
-    char mob_no[11];
+    char mob_no[40];
     char accNo[40];//16bits long
     char IFSCcode[40];//10bits long
     int balance;
-    char email[50];
-    char upiId[15];//10bits long
+    char email[40];
+    char upiId[40];//10bits long
     int upiPass;//6digits
-    char last_login[50];
+    char last_login[40];
 };
 
 //Bank Management Functions
@@ -24,11 +24,12 @@ int neft_withdraw(int user_index, char *amount, char *acc_id);
 int upi_transfer(int user_index, char *pass, char *amount, char *upi_rec);
 int pass_check(int user_index, char pass[40]);
 int set_upi_pass(int user_index, char *pass);
+void logout_set_time(int user_index);
 void modify_details(int user_index, char password[40], char number[11], char email[50]);
 
 //Encrypt Decrypt
-char encrypt(char *a);
-char decrypt(char *a);
+void encrypt(char *a);
+void decrypt(char *a);
 
 //Greet Functions
 int greet_main();

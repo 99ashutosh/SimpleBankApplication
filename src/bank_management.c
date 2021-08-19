@@ -6,10 +6,11 @@
 
 struct customer s[100];
 char file[] = "../data/user_data.csv";
+char file_enc[] = "../data/user_data_enc.csv";
 int size = 0;
 
 void getFile(){
-    FILE* fp = fopen(file, "r");
+    FILE* fp = fopen(file_enc, "r");
     int i=0;
     if (!fp){
         printf("File is empty or file does not exist.\n");
@@ -22,24 +23,34 @@ void getFile(){
             if (row == 1)continue;
             char* value = strtok(buffer, ",");
             while (value){
+                decrypt(value);
                 strcpy(s[i].last_login,value);
                 value = strtok(NULL, ",");
+                decrypt(value);
                 strcpy(s[i].userName,value);
                 value = strtok(NULL, ",");
+                decrypt(value);
                 strcpy(s[i].password,value);
                 value = strtok(NULL, ",");
+                decrypt(value);
                 strcpy(s[i].mob_no,value);
                 value = strtok(NULL, ",");
+                decrypt(value);
                 strcpy(s[i].accNo,value);
                 value = strtok(NULL, ",");
+                decrypt(value);
                 strcpy(s[i].IFSCcode,value);
                 value = strtok(NULL, ",");
+                decrypt(value);
                 s[i].balance = strtof(value,NULL);
                 value = strtok(NULL, ",");
+                decrypt(value);
                 strcpy(s[i].email,value);
                 value = strtok(NULL, ",");
+                decrypt(value);
                 strcpy(s[i].upiId,value);
                 value = strtok(NULL, ",");
+                decrypt(value);
                 s[i].upiPass = atoi(value);
                 value = strtok(NULL, ",");
                 i++;
@@ -52,32 +63,42 @@ void getFile(){
 }
 
 void putFile(){
-    FILE* fp = fopen(file, "w");
+    FILE* fp = fopen(file_enc, "w");
     int i=0;
     fputs("Logout_time,Username,Password,MobNo,AccountID,IFSC,Balance,Email,UPI_ID,UPI_passcode\n",fp);
     while(i<size)
     {
-        fputs(s[i].last_login,fp);
+        encrypt(s[i].last_login);
+        fputs(s[i].last_login, fp);
         fputc(',',fp);
+        encrypt(s[i].userName);
         fputs(s[i].userName,fp);
         fputc(',',fp);
+        encrypt(s[i].password);
         fputs(s[i].password,fp);
         fputc(',',fp);
+        encrypt(s[i].mob_no);
         fputs(s[i].mob_no, fp);
         fputc(',', fp);
+        encrypt(s[i].accNo);
         fputs(s[i].accNo,fp);
         fputc(',',fp);
+        encrypt(s[i].IFSCcode);
         fputs(s[i].IFSCcode,fp);
         fputc(',',fp);
-        char text[20], text2[6];
+        char text[40], text2[40];
         sprintf(text, "%d", s[i].balance);
+        encrypt(text);
         fputs(text,fp);
         fputc(',',fp);
+        encrypt(s[i].email);
         fputs(s[i].email,fp);
         fputc(',',fp);
+        encrypt(s[i].upiId);
         fputs(s[i].upiId,fp);
         fputc(',',fp);
         sprintf(text2, "%d", s[i].upiPass);
+        encrypt(text2);
         fputs(text2,fp);
         fputs("\n",fp);
         i++;
@@ -125,7 +146,6 @@ int set_upi_pass(int user_index, char *pass){
     pass = atoi(pass);
     if(pass>=100000 && pass<=999999){
         s[user_index].upiPass = pass;
-        putFile();
         return 1;
     } else {
         return 2;
@@ -146,13 +166,14 @@ int withdraw(int user_index, char *amount){
 
 int neft_withdraw(int user_index, char *amount, char *acc_id){
     int amount1 = atoi(amount);
-    int receiver = 0;
+    int receiver = -1;
     for (int i = 0; i < size; i++){
         if (strcmp(s[i].accNo, acc_id) == '0' || strcmp(s[i].accNo, acc_id) == 0) {
             receiver = i;
-        } else {
-            return 1;
         }
+    }
+    if (receiver == -1){
+        return 1;
     }
     s[user_index].balance = s[user_index].balance - amount1;
     s[receiver].balance += amount1;
@@ -162,14 +183,14 @@ int upi_transfer(int user_index, char *pass, char *amount, char *upi_rec){
     int amount1 = atoi(amount);
     int pass1 = atoi(pass);
     if (s[user_index].upiPass == pass1){
-        int receiver = 0;
+        int receiver = -1;
         for (int i = 0; i < size; i++){
             if (strcmp(s[i].upiId, upi_rec) == '0' || strcmp(s[i].upiId, upi_rec) == 0) {
                 receiver = i;
-            } else {
-                return 2;
             }
         }
+        if (receiver == -1)
+            return 2;
         s[user_index].balance = s[user_index].balance - amount1;
         s[receiver].balance += amount1;
         return 1;
@@ -239,4 +260,12 @@ int pass_check(int user_index, char pass[40]){
         return 1;
     else
         return 0;
+}
+
+void logout_set_time(int user_index){
+    char buffer[100];
+    strcpy(buffer, __TIME__);
+    strcat(buffer, "-");
+    strcat(buffer, __DATE__);
+    strcpy(s[user_index].last_login, buffer);
 }

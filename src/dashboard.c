@@ -38,7 +38,6 @@ typedef struct {  //Home Tab
     //All upi info widgets
     GtkWidget *g_lbl_upi_passcode1;
     GtkWidget *g_lbl_upi_handler;
-    GtkWidget *g_switch_upi_passcode_visible;
 
     //Account Mod widgets
     // All acc_details widgets
@@ -48,6 +47,7 @@ typedef struct {  //Home Tab
     GtkWidget *g_lbl_curr_pass_incorrect;
     GtkWidget *g_lbl_new_set_successful;
     GtkWidget *g_lbl_new_set_fail;
+    GtkWidget *g_lbl_mod_mob_err;
     GtkWidget *g_entry_new_email;
     GtkWidget *g_entry_new_mobile;
     GtkWidget *g_entry_new_password;
@@ -80,16 +80,17 @@ typedef struct {  //Home Tab
 int user_index;
 
 int dashboard_main(int index, int argc, char *argv[]){
+    getFile();
     user_index = index;
     GtkBuilder* builder;
-    GtkWidget* window;
+    GtkWidget* window2;
 
     appWidgets  *app_data = g_slice_new(appWidgets);
 
     gtk_init(&argc, &argv);
 
     builder = gtk_builder_new_from_file("../glade/dashboard.glade");
-    window = GTK_WIDGET(gtk_builder_get_object(builder, "dashboard_main"));
+    window2 = GTK_WIDGET(gtk_builder_get_object(builder, "dashboard_main"));
 
     //Home widgets defied here
     app_data->g_lbl_home_acc_id = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_home_acc_id"));
@@ -126,6 +127,7 @@ int dashboard_main(int index, int argc, char *argv[]){
     app_data->g_lbl_email_holder = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_email"));
     app_data->g_lbl_curr_pass_incorrect = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_pass_incorrect"));
     app_data->g_lbl_new_set_fail = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_acc_fail"));
+    app_data->g_lbl_mod_mob_err = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_mod_mob_err"));
     app_data->g_lbl_new_set_successful = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_acc_success"));
     app_data->g_entry_new_email = GTK_WIDGET(gtk_builder_get_object(builder, "entry_new_email"));
     app_data->g_entry_new_mobile = GTK_WIDGET(gtk_builder_get_object(builder, "entry_new_mobile"));
@@ -164,7 +166,7 @@ int dashboard_main(int index, int argc, char *argv[]){
     gtk_label_set_text(app_data->g_lbl_home_email,s[index].email);
     gtk_label_set_text(app_data->g_lbl_home_mob_no,s[index].mob_no);
     gtk_label_set_text(app_data->g_lbl_home_upi_handler,s[index].upiId);
-    gtk_label_set_text(app_data->g_lbl_home_upi_passcode,"●●●●●●");
+    gtk_label_set_text(app_data->g_lbl_home_upi_passcode,upi_pass);
     gtk_label_set_text(app_data->g_lbl_home_lastlogin,s[index].last_login);
     gtk_label_set_text(app_data->g_lbl_home_acc_id,s[index].accNo);
     gtk_label_set_text(app_data->g_lbl_home_bal,bal);
@@ -201,6 +203,7 @@ int dashboard_main(int index, int argc, char *argv[]){
     gtk_widget_set_visible(app_data->g_lbl_withd_amt_err, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_withd_upi_pass_err, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_withd_upi_rec_err, FALSE);
+    gtk_widget_set_visible(app_data->g_lbl_mod_mob_err, FALSE);
     /*
     gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_upir), FALSE);
     gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_upipass), FALSE);
@@ -217,33 +220,25 @@ int dashboard_main(int index, int argc, char *argv[]){
     gtk_builder_connect_signals(builder, app_data);
     g_object_unref(builder);
 
-    gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
-    gtk_widget_show(window);
+    gtk_window_set_resizable(GTK_WINDOW(window2), FALSE);
+    gtk_widget_show(window2);
     gtk_main();
 
     g_slice_free(appWidgets, app_data);
     g_free(bal);
-    g_free(upi_pass);
 
     return 0;
 }
 void on_dashboard_main_destroy(){
-    putFile();
     gtk_main_quit();
 }
-
-void on_btn_logout_clicked (GtkButton *btn_logout, gpointer window){
-    putFile();
-    gtk_main_quit();
-}
-
 void on_btn_dashboard_exit_clicked (GtkButton *btn_exit, gpointer window){
-    putFile();
     gtk_main_quit();
 }
 
 // UPI PI-PIN Update function
 void on_btn_update_upi_clicked (GtkButton *btn_update_upi, appWidgets *app_data){
+    getFile();
     gchar *upi_pass;
     if (s[user_index].upiPass == 0){
         gtk_widget_set_visible(app_data->g_lbl_upi_warning, TRUE);
@@ -264,17 +259,15 @@ void on_btn_update_upi_clicked (GtkButton *btn_update_upi, appWidgets *app_data)
             putFile();
         } else {
             gtk_widget_set_visible(app_data->g_lbl_pass_set_fail, TRUE);
-            putFile();
         }
     } else {
         gtk_widget_set_visible(app_data->g_lbl_pass_no_match, TRUE);
-        putFile();
     }
-    g_free(upi_pass);
 }
 
 // Funds add function
 void on_btn_add_funds_clicked (GtkButton *btn_add_funds, appWidgets *app_data){
+    getFile();
     gchar *bal2;
     gtk_widget_set_visible(app_data->g_lbl_add_success, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_add_fail, FALSE);
@@ -283,18 +276,20 @@ void on_btn_add_funds_clicked (GtkButton *btn_add_funds, appWidgets *app_data){
     if (pass_check(user_index, password)==1){
         deposit(user_index, amount);
         putFile();
+        getFile();
         bal2 = g_strdup_printf("%d", s[user_index].balance);
         gtk_label_set_text(app_data->g_lbl_home_bal,bal2);
         gtk_label_set_text(app_data->g_lbl_add_bal,bal2);
+        gtk_label_set_text(app_data->g_lbl_withd_bal,bal2);
         gtk_widget_set_visible(app_data->g_lbl_add_success, TRUE);
     } else {
         gtk_widget_set_visible(app_data->g_lbl_add_fail, TRUE);
     }
-    g_free(bal2);
 }
 
 // Account Modifications Function
 void on_btn_change_info_clicked (GtkButton *btn_change_info, appWidgets *app_data){
+    getFile();
     gtk_widget_set_visible(app_data->g_lbl_curr_pass_incorrect, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_new_set_successful, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_new_set_fail, FALSE);
@@ -305,6 +300,7 @@ void on_btn_change_info_clicked (GtkButton *btn_change_info, appWidgets *app_dat
     if (pass_check(user_index, password)==1){
         modify_details(user_index, new_password, mobile_no, email);
         putFile();
+        getFile();
         gtk_label_set_text(app_data->g_lbl_name_holder,s[user_index].userName);
         gtk_label_set_text(app_data->g_lbl_email_holder,s[user_index].email);
         gtk_label_set_text(app_data->g_lbl_mobile_holder,s[user_index].mob_no);
@@ -342,33 +338,47 @@ void on_btn_withdraw_clicked (GtkButton *btn_withdraw, appWidgets *app_data){
     if (strlen(amount)==0){
         gtk_widget_set_visible(app_data->g_lbl_withd_amt_err, FALSE);
     } else if (pass_check(user_index, password)==1){
+        getFile();
         if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(app_data->g_radio_cred))){
+            getFile();
             withdraw(user_index, amount);
             bal2 = g_strdup_printf("%d", s[user_index].balance);
             gtk_label_set_text(app_data->g_lbl_withd_bal, bal2);
+            gtk_label_set_text(app_data->g_lbl_add_bal, bal2);
+            gtk_label_set_text(app_data->g_lbl_home_bal, bal2);
             gtk_widget_set_visible(app_data->g_lbl_withd_success, TRUE);
             g_free(bal2);
-        }
-        else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(app_data->g_radio_neft))){
-            if (neft_withdraw(user_index, amount, acc_id)== 0){
+            putFile();
+        } else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(app_data->g_radio_neft))){
+            getFile();
+            int opr_neft = neft_withdraw(user_index, amount, acc_id);
+            if (opr_neft == 0){
                 bal2 = g_strdup_printf("%d", s[user_index].balance);
                 gtk_label_set_text(app_data->g_lbl_withd_bal, bal2);
+                gtk_label_set_text(app_data->g_lbl_add_bal, bal2);
+                gtk_label_set_text(app_data->g_lbl_home_bal, bal2);
                 gtk_widget_set_visible(app_data->g_lbl_withd_success, TRUE);
                 g_free(bal2);
-            } else if (neft_withdraw(user_index, amount, acc_id)== 1){
+                putFile();
+            } else if (opr_neft == 1){
                 gtk_widget_set_visible(app_data->g_lbl_withd_accid_err, TRUE);
                 gtk_widget_set_visible(app_data->g_lbl_withd_fail, TRUE);
             }
         } else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(app_data->g_radio_upi))) {
-            if (upi_transfer(user_index, upi_pass, amount, upi_rec) == 1){
+            getFile();
+            int opr_upi = upi_transfer(user_index, upi_pass, amount, upi_rec);
+            if (opr_upi == 1){
                 bal2 = g_strdup_printf("%d", s[user_index].balance);
                 gtk_label_set_text(app_data->g_lbl_withd_bal, bal2);
+                gtk_label_set_text(app_data->g_lbl_add_bal, bal2);
+                gtk_label_set_text(app_data->g_lbl_home_bal, bal2);
                 gtk_widget_set_visible(app_data->g_lbl_withd_success, TRUE);
                 g_free(bal2);
-            } else if (upi_transfer(user_index, upi_pass, amount, upi_rec) == 2){
+                putFile();
+            } else if (opr_upi == 2){
                 gtk_widget_set_visible(app_data->g_lbl_withd_upi_rec_err, TRUE);
                 gtk_widget_set_visible(app_data->g_lbl_withd_fail, TRUE);
-            } else if (upi_transfer(user_index, upi_pass, amount, upi_rec) == 0){
+            } else if (opr_upi == 0){
                 gtk_widget_set_visible(app_data->g_lbl_withd_upi_pass_err, TRUE);
                 gtk_widget_set_visible(app_data->g_lbl_withd_fail, TRUE);
             }
@@ -378,9 +388,8 @@ void on_btn_withdraw_clicked (GtkButton *btn_withdraw, appWidgets *app_data){
     } else {
         gtk_widget_set_visible(app_data->g_lbl_withd_fail, TRUE);
     }
-    putFile();
 }
-/*
+
 void on_rad_cred_deb_toggled(GtkToggleButton *togglebutton, appWidgets *app_data){
     if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(app_data->g_radio_cred))){
         gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_upir), FALSE);
@@ -388,9 +397,25 @@ void on_rad_cred_deb_toggled(GtkToggleButton *togglebutton, appWidgets *app_data
         gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_accid), FALSE);
     } else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(app_data->g_radio_neft))) {
         gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_accid), TRUE);
+        gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_upir), FALSE);
+        gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_upipass), FALSE);
     } else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(app_data->g_radio_upi))) {
+    gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_accid), FALSE);
         gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_upir), TRUE);
         gtk_widget_set_sensitive(GTK_ENTRY(app_data->g_entry_withd_upipass), TRUE);
     }
 }
- */
+
+void on_entry_new_mobile_changed (GtkEditable *entry_new_mobile, appWidgets *app_data){
+    const char *number = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_new_mobile));
+    if (strlen(number)!=10){
+        gtk_widget_set_visible(app_data->g_lbl_mod_mob_err, TRUE);
+        gtk_widget_set_sensitive(app_data->g_btn_change_info, FALSE);
+    } else if (strlen(number)!=0){
+        gtk_widget_set_visible(app_data->g_lbl_mod_mob_err, FALSE);
+        gtk_widget_set_sensitive(app_data->g_btn_change_info, TRUE);
+    } else{
+        gtk_widget_set_visible(app_data->g_lbl_mod_mob_err, FALSE);
+        gtk_widget_set_sensitive(app_data->g_btn_change_info, TRUE);
+    }
+}

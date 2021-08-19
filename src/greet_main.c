@@ -13,17 +13,19 @@ typedef struct {
     GtkWidget* g_lbl_user_exists;
     GtkWidget* g_lbl_strong;
     GtkWidget* g_lbl_weak;
+    GtkWidget *g_lbl_create_mob_err;
+    GtkWidget *g_btn_greet_create_user;
     GtkWidget* popover;
     GtkWidget* g_pass_progress;
     GtkWidget* g_img_user_valid;
     GtkWidget* g_lbl_retype_err;
     GtkWidget* g_img_retype_success;
-    GtkWidget* g_btn_greet_create_user;
     GtkWidget *g_entry_new_username;
     GtkWidget *g_entry_new_password;
     GtkWidget *g_entry_new_retype_password;
     GtkWidget *g_entry_new_mobno;
     GtkWidget *g_entry_new_email;
+
 } appWidgets;
 
 int main(int argc, char* argv[]) {
@@ -50,6 +52,8 @@ int main(int argc, char* argv[]) {
     app_data->g_lbl_retype_err = GTK_WIDGET(gtk_builder_get_object(builder, "retype_err"));
     app_data->g_lbl_strong = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_strong"));
     app_data->g_lbl_weak = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_weak"));
+    app_data->g_lbl_create_mob_err = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_create_mob_err"));
+    app_data->g_btn_greet_create_user = GTK_WIDGET(gtk_builder_get_object(builder, "btn_greet_create_user"));
     app_data->g_entry_new_username = GTK_WIDGET(gtk_builder_get_object(builder, "entry_new_username"));
     app_data->g_entry_new_password = GTK_WIDGET(gtk_builder_get_object(builder, "entry_new_password"));
     app_data->g_entry_new_retype_password = GTK_WIDGET(gtk_builder_get_object(builder, "entry_new_retype_password"));
@@ -70,6 +74,7 @@ int main(int argc, char* argv[]) {
     gtk_widget_set_visible(app_data->g_lbl_user_exists, FALSE);
     gtk_widget_set_visible(app_data->g_img_user_valid, FALSE);
     gtk_widget_set_visible(app_data->g_img_retype_success, FALSE);
+    gtk_widget_set_visible(app_data->g_lbl_create_mob_err, FALSE);
     gtk_spinner_start(GTK_SPINNER(app_data->g_check));
 
     //Signal Connect and exit
@@ -156,24 +161,37 @@ void on_btn_greet_create_user_clicked (GtkButton *btn_greet_create_user, appWidg
     const char *email = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_new_email));
     signup(username, password, number, email);
     putFile();
+    getFile();
     int user_index = get_user_index(username);
     dashboard_main(user_index,'\0','\0');
     gtk_main_quit();
 }
 
-void on_btn_login_clicked (GtkButton *btn_login, appWidgets *app_data, GtkWidget *greet_main_window){
+void on_btn_login_clicked (GtkButton *btn_login, appWidgets *app_data, gpointer *window){
     gtk_widget_set_visible(app_data->g_lbl_login_user_err, FALSE);
     gtk_widget_set_visible(app_data->g_lbl_login_pass_err, FALSE);
     //	gtk_widget_set_sensitive(g_btn_login, FALSE);
     const char *username = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_login_username));
     const char *password = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_login_password));
-    if (login(username,password)==1)	{
+    if (login(username,password)==1){
         gtk_widget_set_visible(app_data->g_lbl_login_user_err, TRUE);
     } else if (login(username,password)==2){
         gtk_widget_set_visible(app_data->g_lbl_login_pass_err, TRUE);
     } else if (login(username,password)==0){
+        getFile();
         int user_index = get_user_index(username);
         dashboard_main(user_index,'\0','\0');
         gtk_main_quit();
+    }
+}
+
+void on_enter_new_mobno_changed (GtkEditable *enter_new_mobno, appWidgets *app_data){
+    const char *number = gtk_entry_get_text(GTK_ENTRY(app_data->g_entry_new_mobno));
+    if (strlen(number)==10){
+        gtk_widget_set_visible(app_data->g_lbl_create_mob_err, FALSE);
+        gtk_widget_set_sensitive(app_data->g_btn_greet_create_user, TRUE);
+    } else {
+        gtk_widget_set_visible(app_data->g_lbl_create_mob_err, TRUE);
+        gtk_widget_set_sensitive(app_data->g_btn_greet_create_user, FALSE);
     }
 }

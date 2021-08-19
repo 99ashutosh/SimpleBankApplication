@@ -121,22 +121,6 @@
                     <property name="y">95</property>
                   </packing>
                 </child>
-                <child>
-                  <object class="GtkLabel" id="lbl_home_ID">
-                    <property name="width-request">76</property>
-                    <property name="height-request">22</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Messages</property>
-                    <attributes>
-                      <attribute name="font-desc" value="Fira Sans Medium 13"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="x">7</property>
-                    <property name="y">179</property>
-                  </packing>
-                </child>
               </object>
               <packing>
                 <property name="resize">False</property>
@@ -254,32 +238,6 @@
                   <packing>
                     <property name="x">46</property>
                     <property name="y">219</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSwitch" id="switch_passcode_visible">
-                    <property name="width-request">50</property>
-                    <property name="height-request">26</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <signal name="activate" handler="on_switch_passcode_visible_activate" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="x">277</property>
-                    <property name="y">213</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkImage" id="img_visible">
-                    <property name="width-request">32</property>
-                    <property name="height-request">24</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="pixbuf">../images/icons/svg-dark/visibility-off.svg</property>
-                  </object>
-                  <packing>
-                    <property name="x">237</property>
-                    <property name="y">213</property>
                   </packing>
                 </child>
                 <child>
@@ -942,6 +900,7 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="tooltip-text" translatable="yes">Enter current UPI PI-PIN</property>
+                    <property name="max-length">6</property>
                     <property name="visibility">False</property>
                     <property name="invisible-char">•</property>
                     <property name="placeholder-text" translatable="yes">Enter UPI PI-PIN</property>
@@ -1070,7 +1029,7 @@ Reciver's Account</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">Current Balance:</property>
                     <attributes>
-                      <attribute name="font-desc" value="Fira Sans Bold 14"/>
+                      <attribute name="font-desc" value="Fira Sans Medium 15"/>
                     </attributes>
                   </object>
                   <packing>
@@ -1084,7 +1043,7 @@ Reciver's Account</property>
                     <property name="can-focus">False</property>
                     <property name="label" translatable="yes">&lt;bal here&gt;</property>
                     <attributes>
-                      <attribute name="font-desc" value="Fira Sans Medium 30"/>
+                      <attribute name="font-desc" value="Fira Sans Bold 30"/>
                     </attributes>
                   </object>
                   <packing>
@@ -1417,32 +1376,6 @@ Current UPI Handler can be seen on the right pane.</property>
                   <packing>
                     <property name="x">3</property>
                     <property name="y">8</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkImage" id="img_upi_visible">
-                    <property name="width-request">24</property>
-                    <property name="height-request">24</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="pixbuf">../images/icons/svg-dark/visibility-off.svg</property>
-                  </object>
-                  <packing>
-                    <property name="x">199</property>
-                    <property name="y">86</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSwitch" id="switch_upi_passcode_visible">
-                    <property name="width-request">50</property>
-                    <property name="height-request">26</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <signal name="state-set" handler="on_switch_upi_passcode_visible_state_set" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="x">235</property>
-                    <property name="y">85</property>
                   </packing>
                 </child>
                 <child>
@@ -1810,8 +1743,10 @@ click on  "Change Account Details"</property>
                     <property name="width-request">300</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="max-length">10</property>
                     <property name="placeholder-text" translatable="yes">Enter new Mobile number</property>
                     <property name="input-purpose">digits</property>
+                    <signal name="changed" handler="on_entry_new_mobile_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="x">15</property>
@@ -1830,6 +1765,23 @@ click on  "Change Account Details"</property>
                   <packing>
                     <property name="x">15</property>
                     <property name="y">339</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_mod_mob_err">
+                    <property name="width-request">193</property>
+                    <property name="height-request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Enter a Valid Mobile Number</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Fira Sans Medium 11"/>
+                      <attribute name="foreground" value="#e0e01b1b2424"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">322</property>
+                    <property name="y">293</property>
                   </packing>
                 </child>
               </object>
@@ -1972,21 +1924,6 @@ current password</property>
               <object class="GtkFixed" id="logout_pan">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <child>
-                  <object class="GtkButton" id="btn_logout">
-                    <property name="label" translatable="yes">Log out of Account</property>
-                    <property name="width-request">161</property>
-                    <property name="height-request">34</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
-                    <signal name="clicked" handler="on_btn_logout_clicked" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="x">40</property>
-                    <property name="y">146</property>
-                  </packing>
-                </child>
                 <child>
                   <object class="GtkButton" id="btn_exit">
                     <property name="label" translatable="yes">Logout and Exit Program</property>

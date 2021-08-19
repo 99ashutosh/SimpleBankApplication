@@ -281,10 +281,12 @@ User does not exist</property>
                     <property name="height-request">34</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="max-length">10</property>
                     <property name="primary-icon-pixbuf">../images/icons/svg-dark/call.svg</property>
                     <property name="primary-icon-tooltip-text" translatable="yes">Enter Mobile Number</property>
                     <property name="placeholder-text" translatable="yes">Enter Mobile Number</property>
                     <property name="input-purpose">phone</property>
+                    <signal name="changed" handler="on_enter_new_mobno_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="x">13</property>
@@ -395,6 +397,22 @@ User does not exist</property>
                   <packing>
                     <property name="x">318</property>
                     <property name="y">17</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lbl_create_mob_err">
+                    <property name="width-request">193</property>
+                    <property name="height-request">20</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Enter a Valid Mobile Number</property>
+                    <attributes>
+                      <attribute name="foreground" value="#e0e01b1b2424"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="x">321</property>
+                    <property name="y">184</property>
                   </packing>
                 </child>
               </object>
